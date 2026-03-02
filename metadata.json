@@ -1,0 +1,5 @@
+{
+  "name": "GrowthAnalytics Lead Capture",
+  "description": "A lead generation site with Google Sheets integration and GA4 tracking.",
+  "requestFramePermissions": []
+}
