@@ -42,17 +42,40 @@ export function BlogPost() {
             Back to all articles
           </Link>
           
-          <div className="flex items-center text-sm text-zinc-500 mb-6">
-            <BookOpen className="w-4 h-4 mr-2" />
-            <span>{post.keyword}</span>
+          <div className="flex items-center gap-4 text-sm text-zinc-500 mb-6">
+            <div className="flex items-center">
+              <BookOpen className="w-4 h-4 mr-2" />
+              <span className="font-medium text-zinc-900 bg-zinc-100 px-2.5 py-0.5 rounded-full">{post.keyword}</span>
+            </div>
+            <span className="w-1 h-1 rounded-full bg-zinc-300"></span>
+            <span>5 min read</span>
           </div>
           
-          <h1 className="text-4xl font-bold text-zinc-900 tracking-tight sm:text-5xl mb-8">
+          <h1 className="text-4xl font-bold text-zinc-900 tracking-tight sm:text-5xl lg:text-6xl mb-8 leading-[1.1]">
             {post.title}
           </h1>
+
+          <div className="flex items-center gap-4 py-6 border-y border-zinc-100 mb-12">
+            <div className="w-12 h-12 rounded-full bg-zinc-200 flex items-center justify-center text-zinc-500 font-bold text-lg">
+              L
+            </div>
+            <div>
+              <p className="font-semibold text-zinc-900">Lumetra Team</p>
+              <p className="text-sm text-zinc-500">Revenue Intelligence Experts</p>
+            </div>
+          </div>
         </div>
 
-        <div className="prose prose-zinc prose-lg max-w-none prose-headings:font-bold prose-a:text-zinc-900 prose-a:font-semibold hover:prose-a:text-zinc-600">
+        <div className="prose prose-zinc md:prose-lg max-w-none 
+          prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-zinc-900
+          prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
+          prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
+          prose-p:text-zinc-600 prose-p:leading-relaxed
+          prose-a:text-zinc-900 prose-a:font-semibold prose-a:underline-offset-4 hover:prose-a:text-zinc-600
+          prose-blockquote:border-l-4 prose-blockquote:border-zinc-900 prose-blockquote:bg-zinc-50 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:not-italic prose-blockquote:font-medium prose-blockquote:text-zinc-900
+          prose-li:marker:text-zinc-400 prose-li:text-zinc-600
+          prose-strong:text-zinc-900 prose-strong:font-semibold
+          prose-img:rounded-2xl prose-img:shadow-md">
           <ReactMarkdown>{post.content}</ReactMarkdown>
         </div>
         

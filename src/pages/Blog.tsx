@@ -30,24 +30,23 @@ export function Blog() {
           {currentPosts.map((post) => (
             <article key={post.id} className="bg-white rounded-2xl shadow-sm border border-zinc-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
               <div className="p-8 flex-1 flex flex-col">
-                <div className="flex items-center text-sm text-zinc-500 mb-4">
-                  <BookOpen className="w-4 h-4 mr-2" />
-                  <span>{post.keyword}</span>
+                <div className="flex items-center text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4">
+                  <span className="bg-zinc-100 px-2.5 py-1 rounded-md">{post.keyword}</span>
                 </div>
                 <h2 className="text-xl font-bold text-zinc-900 mb-3 line-clamp-2">
                   <Link to={`/blog/${post.slug}`} className="hover:text-zinc-600 transition-colors">
                     {post.title}
                   </Link>
                 </h2>
-                <p className="text-zinc-600 mb-6 line-clamp-3 flex-1">
+                <p className="text-zinc-600 mb-6 line-clamp-3 flex-1 leading-relaxed">
                   {post.excerpt}
                 </p>
                 <Link 
                   to={`/blog/${post.slug}`}
-                  className="inline-flex items-center text-sm font-semibold text-zinc-900 hover:text-zinc-600 transition-colors mt-auto"
+                  className="inline-flex items-center text-sm font-semibold text-zinc-900 hover:text-zinc-600 transition-colors mt-auto group"
                 >
                   Read Article
-                  <ArrowRight className="w-4 h-4 ml-1" />
+                  <ArrowRight className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </article>

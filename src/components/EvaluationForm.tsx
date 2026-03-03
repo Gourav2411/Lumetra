@@ -5,6 +5,7 @@ import { trackEvent } from '../utils/analytics';
 import { config } from '../config';
 import { CheckCircle2, Download, ArrowRight, Loader2, ChevronRight, ChevronLeft } from 'lucide-react';
 import { useLocation, Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -30,7 +31,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
   const [mountedAt, setMountedAt] = useState<number>(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [currentStep, setCurrentStep] = useState(1);
   const [qualificationTier, setQualificationTier] = useState<string>('');
   
@@ -157,41 +158,93 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
   const isWebsiteInvalid = formData.website.length > 0 && !formData.website.startsWith('http://') && !formData.website.startsWith('https://');
 
   const validateStep = (step: number) => {
-    setError(null);
+    const newErrors: Record<string, string> = {};
+    let isValid = true;
+
     if (step === 1) {
-      if (!formData.fullName || !formData.email || !formData.company || !formData.website || !formData.businessType || !formData.revenueRange) {
-        setError('Please fill in all required fields to continue.');
-        return false;
+      if (!formData.fullName) {
+        newErrors.fullName = 'Full name is required';
+        isValid = false;
       }
-      if (isWebsiteInvalid) {
-        setError('Please enter a valid website URL starting with http:// or https://');
-        return false;
+      if (!formData.email) {
+        newErrors.email = 'Email is required';
+        isValid = false;
+      } else {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+          newErrors.email = 'Please enter a valid work email address';
+          isValid = false;
+        }
       }
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(formData.email)) {
-        setError('Please enter a valid work email address.');
-        return false;
+      if (!formData.company) {
+        newErrors.company = 'Company name is required';
+        isValid = false;
+      }
+      if (!formData.website) {
+        newErrors.website = 'Website URL is required';
+        isValid = false;
+      } else if (isWebsiteInvalid) {
+        newErrors.website = 'URL must start with http:// or https://';
+        isValid = false;
+      }
+      if (!formData.businessType) {
+        newErrors.businessType = 'Please select a business type';
+        isValid = false;
+      }
+      if (!formData.revenueRange) {
+        newErrors.revenueRange = 'Please select a revenue range';
+        isValid = false;
       }
     }
+    
     if (step === 2) {
-      if (!formData.adSpend || formData.adChannels.length === 0 || !formData.salesCycle) {
-        setError('Please complete all fields in this section.');
-        return false;
+      if (!formData.adSpend) {
+        newErrors.adSpend = 'Please select your monthly ad spend';
+        isValid = false;
+      }
+      if (formData.adChannels.length === 0) {
+        newErrors.adChannels = 'Please select at least one ad channel';
+        isValid = false;
+      }
+      if (!formData.salesCycle) {
+        newErrors.salesCycle = 'Please select your average sales cycle';
+        isValid = false;
       }
     }
+    
     if (step === 3) {
-      if (!formData.exportBigQuery || !formData.offlineConversions || !formData.crmIntegrated) {
-        setError('Please answer all measurement questions.');
-        return false;
+      if (!formData.exportBigQuery) {
+        newErrors.exportBigQuery = 'Please answer this question';
+        isValid = false;
+      }
+      if (!formData.offlineConversions) {
+        newErrors.offlineConversions = 'Please answer this question';
+        isValid = false;
+      }
+      if (!formData.crmIntegrated) {
+        newErrors.crmIntegrated = 'Please answer this question';
+        isValid = false;
       }
     }
+    
     if (step === 4) {
-      if (!formData.budget || !formData.timeline) {
-        setError('Please complete the investment readiness section.');
-        return false;
+      if (!formData.budget) {
+        newErrors.budget = 'Please select a budget range';
+        isValid = false;
+      }
+      if (!formData.timeline) {
+        newErrors.timeline = 'Please select a timeline';
+        isValid = false;
       }
     }
-    return true;
+
+    setErrors(newErrors);
+    
+    if (!isValid) {
+      toast.error('Please fix the errors before continuing');
+    }
+    
+    return isValid;
   };
 
   const nextStep = () => {
@@ -203,7 +256,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
 
   const prevStep = () => {
     setCurrentStep(prev => Math.max(prev - 1, 1));
-    setError(null);
+    setErrors({});
     window.scrollTo({ top: document.getElementById('evaluation-form')?.offsetTop || 0, behavior: 'smooth' });
   };
 
@@ -215,12 +268,12 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
     if (formData.honeypot) return;
 
     if (Date.now() - mountedAt < 2000) {
-      setError('Please take a moment to review your information.');
+      toast.error('Please take a moment to review your information.');
       return;
     }
 
     if (!checkRateLimit()) {
-      setError('Too many recent submissions. Please try again later.');
+      toast.error('Too many recent submissions. Please try again later.');
       return;
     }
 
@@ -268,6 +321,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
       if (success) {
         setIsSuccess(true);
         recordSubmission();
+        toast.success('Evaluation submitted successfully!');
         
         trackEvent('evaluation_form_submit', {
           page: location.pathname,
@@ -276,11 +330,11 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
           score: score
         });
       } else {
-        setError('Something went wrong. Please try again.');
+        toast.error('Something went wrong. Please try again.');
       }
     } catch (err) {
       console.error('Submission error:', err);
-      setError('A network error occurred. Please try again.');
+      toast.error('A network error occurred. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -375,12 +429,6 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
           </p>
         </div>
 
-        {error && (
-          <div className="mb-8 p-4 bg-red-50 text-red-700 text-sm rounded-xl border border-red-100">
-            {error}
-          </div>
-        )}
-
         <form onSubmit={handleSubmit} className="space-y-8">
           <div className="hidden" aria-hidden="true">
             <input type="text" tabIndex={-1} value={formData.honeypot} onChange={e => setFormData({...formData, honeypot: e.target.value})} />
@@ -393,21 +441,33 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                   <label className="block text-sm font-semibold text-zinc-900">Full Name</label>
                   <input
                     type="text"
-                    required
-                    className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors"
+                    className={cn(
+                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                      errors.fullName ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                    )}
                     value={formData.fullName}
-                    onChange={e => setFormData({...formData, fullName: e.target.value})}
+                    onChange={e => {
+                      setFormData({...formData, fullName: e.target.value});
+                      if (errors.fullName) setErrors(prev => ({ ...prev, fullName: '' }));
+                    }}
                   />
+                  {errors.fullName && <p className="text-sm text-red-600 mt-1">{errors.fullName}</p>}
                 </div>
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-zinc-900">Work Email</label>
                   <input
                     type="email"
-                    required
-                    className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors"
+                    className={cn(
+                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                      errors.email ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                    )}
                     value={formData.email}
-                    onChange={e => setFormData({...formData, email: e.target.value})}
+                    onChange={e => {
+                      setFormData({...formData, email: e.target.value});
+                      if (errors.email) setErrors(prev => ({ ...prev, email: '' }));
+                    }}
                   />
+                  {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email}</p>}
                 </div>
               </div>
 
@@ -416,26 +476,35 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                   <label className="block text-sm font-semibold text-zinc-900">Company Name</label>
                   <input
                     type="text"
-                    required
-                    className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors"
+                    className={cn(
+                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                      errors.company ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                    )}
                     value={formData.company}
-                    onChange={e => setFormData({...formData, company: e.target.value})}
+                    onChange={e => {
+                      setFormData({...formData, company: e.target.value});
+                      if (errors.company) setErrors(prev => ({ ...prev, company: '' }));
+                    }}
                   />
+                  {errors.company && <p className="text-sm text-red-600 mt-1">{errors.company}</p>}
                 </div>
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-zinc-900">Website URL</label>
                   <input
                     type="url"
-                    required
                     placeholder="https://"
-                    className={`w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors ${
-                      isWebsiteInvalid ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-zinc-200'
-                    }`}
+                    className={cn(
+                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                      errors.website || isWebsiteInvalid ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                    )}
                     value={formData.website}
-                    onChange={e => setFormData({...formData, website: e.target.value})}
+                    onChange={e => {
+                      setFormData({...formData, website: e.target.value});
+                      if (errors.website) setErrors(prev => ({ ...prev, website: '' }));
+                    }}
                   />
-                  {isWebsiteInvalid && (
-                    <p className="text-sm text-red-600 mt-1">URL must start with http:// or https://</p>
+                  {(errors.website || isWebsiteInvalid) && (
+                    <p className="text-sm text-red-600 mt-1">{errors.website || 'URL must start with http:// or https://'}</p>
                   )}
                 </div>
               </div>
@@ -444,26 +513,38 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-zinc-900">Business Type</label>
                   <select
-                    required
-                    className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors"
+                    className={cn(
+                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                      errors.businessType ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                    )}
                     value={formData.businessType}
-                    onChange={e => setFormData({...formData, businessType: e.target.value})}
+                    onChange={e => {
+                      setFormData({...formData, businessType: e.target.value});
+                      if (errors.businessType) setErrors(prev => ({ ...prev, businessType: '' }));
+                    }}
                   >
                     <option value="" disabled>Select type</option>
                     {BUSINESS_TYPE_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                   </select>
+                  {errors.businessType && <p className="text-sm text-red-600 mt-1">{errors.businessType}</p>}
                 </div>
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-zinc-900">Annual Revenue Range</label>
                   <select
-                    required
-                    className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors"
+                    className={cn(
+                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                      errors.revenueRange ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                    )}
                     value={formData.revenueRange}
-                    onChange={e => setFormData({...formData, revenueRange: e.target.value})}
+                    onChange={e => {
+                      setFormData({...formData, revenueRange: e.target.value});
+                      if (errors.revenueRange) setErrors(prev => ({ ...prev, revenueRange: '' }));
+                    }}
                   >
                     <option value="" disabled>Select range</option>
                     {REVENUE_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                   </select>
+                  {errors.revenueRange && <p className="text-sm text-red-600 mt-1">{errors.revenueRange}</p>}
                 </div>
               </div>
             </div>
@@ -475,24 +556,38 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-zinc-900">Monthly Ad Spend</label>
                   <select
-                    className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors"
+                    className={cn(
+                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                      errors.adSpend ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                    )}
                     value={formData.adSpend}
-                    onChange={e => setFormData({...formData, adSpend: e.target.value})}
+                    onChange={e => {
+                      setFormData({...formData, adSpend: e.target.value});
+                      if (errors.adSpend) setErrors(prev => ({ ...prev, adSpend: '' }));
+                    }}
                   >
                     <option value="" disabled>Select spend</option>
                     {AD_SPEND_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                   </select>
+                  {errors.adSpend && <p className="text-sm text-red-600 mt-1">{errors.adSpend}</p>}
                 </div>
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-zinc-900">Average Sales Cycle</label>
                   <select
-                    className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors"
+                    className={cn(
+                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                      errors.salesCycle ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                    )}
                     value={formData.salesCycle}
-                    onChange={e => setFormData({...formData, salesCycle: e.target.value})}
+                    onChange={e => {
+                      setFormData({...formData, salesCycle: e.target.value});
+                      if (errors.salesCycle) setErrors(prev => ({ ...prev, salesCycle: '' }));
+                    }}
                   >
                     <option value="" disabled>Select cycle</option>
                     {SALES_CYCLE_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                   </select>
+                  {errors.salesCycle && <p className="text-sm text-red-600 mt-1">{errors.salesCycle}</p>}
                 </div>
               </div>
 
@@ -505,12 +600,17 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                       <button
                         key={channel}
                         type="button"
-                        onClick={() => handleChannelToggle(channel)}
+                        onClick={() => {
+                          handleChannelToggle(channel);
+                          if (errors.adChannels) setErrors(prev => ({ ...prev, adChannels: '' }));
+                        }}
                         className={cn(
                           "px-4 py-2 text-sm font-medium rounded-lg border transition-all",
                           isSelected 
                             ? "bg-zinc-900 border-zinc-900 text-white" 
-                            : "bg-white border-zinc-200 text-zinc-600 hover:border-zinc-400"
+                            : errors.adChannels
+                              ? "bg-white border-red-300 text-zinc-600 hover:border-red-400"
+                              : "bg-white border-zinc-200 text-zinc-600 hover:border-zinc-400"
                         )}
                       >
                         {channel}
@@ -518,6 +618,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                     );
                   })}
                 </div>
+                {errors.adChannels && <p className="text-sm text-red-600 mt-1">{errors.adChannels}</p>}
               </div>
             </div>
           )}
@@ -531,18 +632,24 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                     <button
                       key={opt}
                       type="button"
-                      onClick={() => setFormData({...formData, exportBigQuery: opt})}
+                      onClick={() => {
+                        setFormData({...formData, exportBigQuery: opt});
+                        if (errors.exportBigQuery) setErrors(prev => ({ ...prev, exportBigQuery: '' }));
+                      }}
                       className={cn(
                         "flex-1 py-3 text-sm font-medium rounded-xl border transition-all",
                         formData.exportBigQuery === opt 
                           ? "bg-zinc-900 border-zinc-900 text-white" 
-                          : "bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-400"
+                          : errors.exportBigQuery
+                            ? "bg-red-50 border-red-300 text-red-700 hover:border-red-400"
+                            : "bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-400"
                       )}
                     >
                       {opt}
                     </button>
                   ))}
                 </div>
+                {errors.exportBigQuery && <p className="text-sm text-red-600 mt-1">{errors.exportBigQuery}</p>}
               </div>
 
               <div className="space-y-3">
@@ -552,18 +659,24 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                     <button
                       key={opt}
                       type="button"
-                      onClick={() => setFormData({...formData, offlineConversions: opt})}
+                      onClick={() => {
+                        setFormData({...formData, offlineConversions: opt});
+                        if (errors.offlineConversions) setErrors(prev => ({ ...prev, offlineConversions: '' }));
+                      }}
                       className={cn(
                         "flex-1 py-3 text-sm font-medium rounded-xl border transition-all",
                         formData.offlineConversions === opt 
                           ? "bg-zinc-900 border-zinc-900 text-white" 
-                          : "bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-400"
+                          : errors.offlineConversions
+                            ? "bg-red-50 border-red-300 text-red-700 hover:border-red-400"
+                            : "bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-400"
                       )}
                     >
                       {opt}
                     </button>
                   ))}
                 </div>
+                {errors.offlineConversions && <p className="text-sm text-red-600 mt-1">{errors.offlineConversions}</p>}
               </div>
 
               <div className="space-y-3">
@@ -573,18 +686,24 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                     <button
                       key={opt}
                       type="button"
-                      onClick={() => setFormData({...formData, crmIntegrated: opt})}
+                      onClick={() => {
+                        setFormData({...formData, crmIntegrated: opt});
+                        if (errors.crmIntegrated) setErrors(prev => ({ ...prev, crmIntegrated: '' }));
+                      }}
                       className={cn(
                         "flex-1 py-3 text-sm font-medium rounded-xl border transition-all",
                         formData.crmIntegrated === opt 
                           ? "bg-zinc-900 border-zinc-900 text-white" 
-                          : "bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-400"
+                          : errors.crmIntegrated
+                            ? "bg-red-50 border-red-300 text-red-700 hover:border-red-400"
+                            : "bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-400"
                       )}
                     >
                       {opt}
                     </button>
                   ))}
                 </div>
+                {errors.crmIntegrated && <p className="text-sm text-red-600 mt-1">{errors.crmIntegrated}</p>}
               </div>
 
               <div className="space-y-2">
@@ -604,14 +723,20 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
               <div className="space-y-2">
                 <label className="block text-sm font-semibold text-zinc-900">Monthly Budget Willing to Allocate for Revenue Intelligence</label>
                 <select
-                  required
-                  className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors"
+                  className={cn(
+                    "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                    errors.budget ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                  )}
                   value={formData.budget}
-                  onChange={e => setFormData({...formData, budget: e.target.value})}
+                  onChange={e => {
+                    setFormData({...formData, budget: e.target.value});
+                    if (errors.budget) setErrors(prev => ({ ...prev, budget: '' }));
+                  }}
                 >
                   <option value="" disabled>Select budget</option>
                   {BUDGET_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                 </select>
+                {errors.budget && <p className="text-sm text-red-600 mt-1">{errors.budget}</p>}
                 <p className="text-xs text-zinc-500 mt-2">Lumetra engagements typically start at 5K per month.</p>
               </div>
 
@@ -622,18 +747,24 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                     <button
                       key={opt}
                       type="button"
-                      onClick={() => setFormData({...formData, timeline: opt})}
+                      onClick={() => {
+                        setFormData({...formData, timeline: opt});
+                        if (errors.timeline) setErrors(prev => ({ ...prev, timeline: '' }));
+                      }}
                       className={cn(
                         "py-3 px-4 text-sm font-medium rounded-xl border transition-all",
                         formData.timeline === opt 
                           ? "bg-zinc-900 border-zinc-900 text-white" 
-                          : "bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-400"
+                          : errors.timeline
+                            ? "bg-red-50 border-red-300 text-red-700 hover:border-red-400"
+                            : "bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-400"
                       )}
                     >
                       {opt}
                     </button>
                   ))}
                 </div>
+                {errors.timeline && <p className="text-sm text-red-600 mt-1">{errors.timeline}</p>}
               </div>
             </div>
           )}
