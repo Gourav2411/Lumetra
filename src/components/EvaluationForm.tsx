@@ -60,13 +60,22 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
 
   useEffect(() => {
     setMountedAt(Date.now());
-    const saved = localStorage.getItem('lumetra_evaluation_progress');
-    if (saved) {
+    const savedData = localStorage.getItem('lumetra_evaluation_progress');
+    const savedStep = localStorage.getItem('lumetra_evaluation_step');
+    
+    if (savedData) {
       try {
-        const parsed = JSON.parse(saved);
+        const parsed = JSON.parse(savedData);
         setFormData(prev => ({ ...prev, ...parsed }));
       } catch (e) {
         console.error('Failed to parse saved form data');
+      }
+    }
+    
+    if (savedStep) {
+      const step = parseInt(savedStep, 10);
+      if (!isNaN(step) && step >= 1 && step <= 4) {
+        setCurrentStep(step);
       }
     }
   }, []);
@@ -76,6 +85,10 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
     const { honeypot, ...toSave } = formData;
     localStorage.setItem('lumetra_evaluation_progress', JSON.stringify(toSave));
   }, [formData]);
+
+  useEffect(() => {
+    localStorage.setItem('lumetra_evaluation_step', currentStep.toString());
+  }, [currentStep]);
 
   const handleChannelToggle = (channel: string) => {
     setFormData(prev => {
@@ -138,13 +151,20 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
     submissions.push(Date.now());
     localStorage.setItem('lumetra_submissions', JSON.stringify(submissions));
     localStorage.removeItem('lumetra_evaluation_progress');
+    localStorage.removeItem('lumetra_evaluation_step');
   };
+
+  const isWebsiteInvalid = formData.website.length > 0 && !formData.website.startsWith('http://') && !formData.website.startsWith('https://');
 
   const validateStep = (step: number) => {
     setError(null);
     if (step === 1) {
       if (!formData.fullName || !formData.email || !formData.company || !formData.website || !formData.businessType || !formData.revenueRange) {
         setError('Please fill in all required fields to continue.');
+        return false;
+      }
+      if (isWebsiteInvalid) {
+        setError('Please enter a valid website URL starting with http:// or https://');
         return false;
       }
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -232,8 +252,9 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
         });
         if (res.ok) success = true;
       } else if (config.GOOGLE_SHEETS_WEBAPP_URL) {
-        const res = await fetch(config.GOOGLE_SHEETS_WEBAPP_URL, {
+        await fetch(config.GOOGLE_SHEETS_WEBAPP_URL, {
           method: 'POST',
+          mode: 'no-cors',
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify(payload),
         });
@@ -267,7 +288,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
 
   if (isSuccess) {
     return (
-      <div className={cn("bg-white p-8 lg:p-12 rounded-2xl shadow-sm border border-zinc-200 text-center", className)}>
+      <div className={cn("bg-white p-6 sm:p-8 lg:p-12 rounded-2xl shadow-sm border border-zinc-200 text-center", className)}>
         <div className="mx-auto w-16 h-16 bg-zinc-900 text-white rounded-full flex items-center justify-center mb-6">
           <CheckCircle2 className="w-8 h-8" />
         </div>
@@ -299,7 +320,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
           </>
         )}
         
-        <div className="space-y-4 flex flex-col items-center pt-8 border-t border-zinc-100">
+        <div className="space-y-4 flex flex-col items-center pt-8 border-t border-zinc-100 w-full">
           <a 
             href="https://calendly.com" 
             target="_blank" 
@@ -312,10 +333,10 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
           <a 
             href={config.LEAD_MAGNET_URL}
             download
-            className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-white text-zinc-900 border border-zinc-200 font-medium rounded-xl hover:bg-zinc-50 transition-colors"
+            className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-white text-zinc-900 border border-zinc-200 font-medium rounded-xl hover:bg-zinc-50 transition-colors text-center"
           >
-            <Download className="w-4 h-4 mr-2" />
-            Download Free GA4 Audit Checklist
+            <Download className="w-4 h-4 mr-2 flex-shrink-0" />
+            <span>Download Free GA4 Audit Checklist</span>
           </a>
         </div>
       </div>
@@ -324,7 +345,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
 
   return (
     <div id="evaluation-form" className={cn("bg-white rounded-2xl shadow-sm border border-zinc-200 overflow-hidden", className)}>
-      <div className="bg-zinc-900 px-8 py-10 text-center">
+      <div className="bg-zinc-900 px-6 py-8 sm:px-8 sm:py-10 text-center">
         <h2 className="text-2xl lg:text-3xl font-bold text-white mb-3">Request a Revenue Intelligence Evaluation</h2>
         <p className="text-zinc-400 max-w-2xl mx-auto">
           We offer a complimentary measurement audit. If we believe Lumetra can create meaningful impact, we will invite you to a strategy call.
@@ -334,7 +355,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
         </p>
       </div>
 
-      <div className="p-8 lg:p-12">
+      <div className="p-6 sm:p-8 lg:p-12">
         <div className="mb-8">
           <div className="flex justify-between text-sm font-medium text-zinc-500 mb-3">
             <span>Step {currentStep} of 4</span>
@@ -407,10 +428,15 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                     type="url"
                     required
                     placeholder="https://"
-                    className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors"
+                    className={`w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors ${
+                      isWebsiteInvalid ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-zinc-200'
+                    }`}
                     value={formData.website}
                     onChange={e => setFormData({...formData, website: e.target.value})}
                   />
+                  {isWebsiteInvalid && (
+                    <p className="text-sm text-red-600 mt-1">URL must start with http:// or https://</p>
+                  )}
                 </div>
               </div>
 
@@ -500,7 +526,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="space-y-3">
                 <label className="block text-sm font-semibold text-zinc-900">Do you export GA4 data to BigQuery?</label>
-                <div className="flex gap-3">
+                <div className="flex flex-col sm:flex-row gap-3">
                   {YES_NO_SURE.map(opt => (
                     <button
                       key={opt}
@@ -521,7 +547,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
 
               <div className="space-y-3">
                 <label className="block text-sm font-semibold text-zinc-900">Do you use offline conversion imports?</label>
-                <div className="flex gap-3">
+                <div className="flex flex-col sm:flex-row gap-3">
                   {YES_NO_SURE.map(opt => (
                     <button
                       key={opt}
@@ -542,7 +568,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
 
               <div className="space-y-3">
                 <label className="block text-sm font-semibold text-zinc-900">Is your CRM integrated with revenue reporting?</label>
-                <div className="flex gap-3">
+                <div className="flex flex-col sm:flex-row gap-3">
                   {YES_NO_PARTIAL.map(opt => (
                     <button
                       key={opt}
@@ -591,7 +617,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
 
               <div className="space-y-3">
                 <label className="block text-sm font-semibold text-zinc-900">Timeline to start</label>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {TIMELINE_OPTIONS.map(opt => (
                     <button
                       key={opt}
@@ -612,25 +638,25 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
             </div>
           )}
 
-          <div className="pt-8 border-t border-zinc-100 flex items-center justify-between">
+          <div className="pt-8 border-t border-zinc-100 flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
             {currentStep > 1 ? (
               <button
                 type="button"
                 onClick={prevStep}
-                className="flex items-center px-6 py-3 text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors"
+                className="flex items-center justify-center w-full sm:w-auto px-6 py-3 text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors"
               >
                 <ChevronLeft className="w-4 h-4 mr-2" />
                 Previous
               </button>
             ) : (
-              <div></div> // Spacer
+              <div className="hidden sm:block"></div> // Spacer
             )}
 
             {currentStep < 4 ? (
               <button
                 type="button"
                 onClick={nextStep}
-                className="flex items-center px-8 py-3 bg-zinc-900 text-white text-sm font-medium rounded-xl hover:bg-zinc-800 transition-colors"
+                className="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-zinc-900 text-white text-sm font-medium rounded-xl hover:bg-zinc-800 transition-colors"
               >
                 Continue
                 <ChevronRight className="w-4 h-4 ml-2" />
@@ -639,7 +665,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex items-center px-8 py-3 bg-zinc-900 text-white text-sm font-medium rounded-xl hover:bg-zinc-800 transition-colors disabled:opacity-70"
+                className="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-zinc-900 text-white text-sm font-medium rounded-xl hover:bg-zinc-800 transition-colors disabled:opacity-70"
               >
                 {isSubmitting ? (
                   <>

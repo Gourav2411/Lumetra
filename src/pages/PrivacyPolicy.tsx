@@ -24,7 +24,7 @@ export function PrivacyPolicy() {
           </p>
           <h2 className="text-2xl font-semibold text-zinc-900 mt-8 mb-4">3. Contact Us</h2>
           <p>
-            If you have any questions about this Privacy Policy, please contact us at hello@growthanalytics.com.
+            If you have any questions about this Privacy Policy, please contact us at hello@lumetra.com.
           </p>
         </div>
       </div>

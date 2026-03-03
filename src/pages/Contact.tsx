@@ -26,7 +26,7 @@ export function Contact() {
                   </div>
                   <div>
                     <h3 className="font-medium text-zinc-900">Email</h3>
-                    <p className="text-zinc-600">hello@growthanalytics.com</p>
+                    <p className="text-zinc-600">hello@lumetra.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">

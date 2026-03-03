@@ -9,6 +9,7 @@ export function Layout() {
     { name: 'Home', path: '/' },
     { name: 'Case Studies', path: '/case-studies' },
     { name: 'Diagnostic', path: '/diagnostic' },
+    { name: 'Blog', path: '/blog' },
     { name: 'Book a Call', path: '/book-call' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -22,7 +23,7 @@ export function Layout() {
               <div className="w-8 h-8 bg-indigo-600 text-white rounded-lg flex items-center justify-center">
                 <Activity className="w-5 h-5" />
               </div>
-              <span className="font-bold text-xl tracking-tight">GrowthAnalytics</span>
+              <span className="font-bold text-xl tracking-tight">Lumetra</span>
             </Link>
             
             <nav className="hidden md:flex gap-8">
@@ -65,10 +66,10 @@ export function Layout() {
                 <div className="w-6 h-6 bg-indigo-600 text-white rounded flex items-center justify-center">
                   <Activity className="w-4 h-4" />
                 </div>
-                <span className="font-bold text-lg tracking-tight">GrowthAnalytics</span>
+                <span className="font-bold text-lg tracking-tight">Lumetra</span>
               </Link>
               <p className="text-zinc-500 text-sm max-w-xs">
-                Helping modern businesses fix tracking, improve attribution, and scale revenue with confidence.
+                Premium revenue measurement architecture for companies spending $30K+ per month on ads.
               </p>
             </div>
             <div>
@@ -90,7 +91,7 @@ export function Layout() {
           </div>
           <div className="border-t border-zinc-100 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-zinc-400">
-              © {new Date().getFullYear()} GrowthAnalytics. All rights reserved.
+              © {new Date().getFullYear()} Lumetra. All rights reserved.
             </p>
           </div>
         </div>

@@ -13,10 +13,10 @@ export function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="max-w-2xl">
               <h1 className="text-5xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
-                Stop guessing. Start tracking revenue.
+                GA4 & BigQuery Revenue Intelligence
               </h1>
               <p className="text-xl text-zinc-400 mb-8 max-w-lg">
-                We help D2C and B2B SaaS companies fix broken tracking, build accurate attribution models, and scale with confidence.
+                Premium revenue measurement architecture for companies spending $30K+ per month on ads.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/diagnostic" className="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors">
