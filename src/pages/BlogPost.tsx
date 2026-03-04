@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { blogs } from '../data/blogs';
 import { ArrowLeft, BookOpen } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -30,8 +31,37 @@ export function BlogPost() {
     );
   }
 
+  const schemaMarkup = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.excerpt,
+    "author": {
+      "@type": "Organization",
+      "name": "Lumetra Team"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Lumetra",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://lumetraanalytics.com/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://lumetraanalytics.com/blog/${post.slug}`
+    }
+  });
+
   return (
     <article className="bg-white min-h-screen py-24">
+      <SEO 
+        title={post.title}
+        description={post.excerpt}
+        canonicalUrl={`https://lumetraanalytics.com/blog/${post.slug}`}
+        schemaMarkup={schemaMarkup}
+      />
       <div className="max-w-3xl mx-auto px-6 lg:px-8">
         <div className="mb-8">
           <Link 

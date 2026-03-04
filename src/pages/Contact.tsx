@@ -1,10 +1,16 @@
 import React from 'react';
 import { EvaluationForm } from '../components/EvaluationForm';
 import { Mail, MapPin, Phone } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export function Contact() {
   return (
     <div className="bg-white min-h-screen py-20">
+      <SEO 
+        title="Contact Us"
+        description="Have a question about our services or want to discuss a custom project? Reach out to our team."
+        canonicalUrl="https://lumetraanalytics.com/contact"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-zinc-900 mb-6">

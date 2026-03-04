@@ -2,10 +2,16 @@ import React from 'react';
 import { EvaluationForm } from '../components/EvaluationForm';
 import { ArrowRight, BarChart3, ShieldCheck, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 export function Home() {
   return (
     <div className="flex flex-col">
+      <SEO 
+        title="GA4 & BigQuery Revenue Intelligence"
+        description="Premium revenue measurement architecture for companies spending $30K+ per month on ads. Fix your GA4 setup and build custom BigQuery models."
+        canonicalUrl="https://lumetraanalytics.com/"
+      />
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 bg-zinc-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://picsum.photos/seed/analytics/1920/1080?blur=10')] opacity-20 mix-blend-overlay"></div>
@@ -152,11 +158,14 @@ export function Home() {
           <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6">
             Ready to scale with confidence?
           </h2>
-          <p className="text-lg text-zinc-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-lg text-zinc-600 mb-10 max-w-2xl mx-auto">
             Stop making decisions based on broken data. Let's build an analytics foundation that actually drives growth.
           </p>
-          <div className="max-w-2xl mx-auto text-left">
-            <EvaluationForm locationContext="Home Footer" />
+          <div className="flex justify-center">
+            <Link to="/diagnostic" className="inline-flex items-center justify-center px-8 py-4 bg-zinc-900 text-white font-medium rounded-xl hover:bg-zinc-800 transition-colors text-lg">
+              Get Revenue Diagnostic
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Link>
           </div>
         </div>
       </section>

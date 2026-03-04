@@ -5,6 +5,7 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { HelmetProvider } from 'react-helmet-async';
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
 import { Diagnostic } from './pages/Diagnostic';
@@ -17,20 +18,22 @@ import { BlogPost } from './pages/BlogPost';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Toaster position="top-center" />
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="case-studies" element={<CaseStudies />} />
-          <Route path="diagnostic" element={<Diagnostic />} />
-          <Route path="book-call" element={<BookCall />} />
-          <Route path="blog" element={<Blog />} />
-          <Route path="blog/:slug" element={<BlogPost />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="privacy-policy" element={<PrivacyPolicy />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Toaster position="top-center" />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="case-studies" element={<CaseStudies />} />
+            <Route path="diagnostic" element={<Diagnostic />} />
+            <Route path="book-call" element={<BookCall />} />
+            <Route path="blog" element={<Blog />} />
+            <Route path="blog/:slug" element={<BlogPost />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="privacy-policy" element={<PrivacyPolicy />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }

@@ -1,10 +1,16 @@
 import React from 'react';
 import { EvaluationForm } from '../components/EvaluationForm';
 import { Calendar, Clock, Video } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export function BookCall() {
   return (
     <div className="bg-zinc-50 min-h-screen py-20">
+      <SEO 
+        title="Book a Call"
+        description="Schedule a free 30-minute consultation to discuss your tracking challenges and how we can help you fix your GA4 setup."
+        canonicalUrl="https://lumetraanalytics.com/book-call"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-zinc-900 mb-6">

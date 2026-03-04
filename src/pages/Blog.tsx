@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { blogs } from '../data/blogs';
 import { ArrowRight, BookOpen } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export function Blog() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,8 +15,25 @@ export function Blog() {
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
+  const schemaMarkup = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": currentPosts.map((post, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "url": `https://lumetraanalytics.com/blog/${post.slug}`,
+      "name": post.title
+    }))
+  });
+
   return (
     <div className="bg-zinc-50 min-h-screen py-24">
+      <SEO 
+        title="Revenue Intelligence Insights"
+        description="Expert guides and strategies on GA4 migration, BigQuery architecture, and data-driven revenue growth."
+        canonicalUrl="https://lumetraanalytics.com/blog"
+        schemaMarkup={schemaMarkup}
+      />
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h1 className="text-4xl font-bold text-zinc-900 tracking-tight sm:text-5xl mb-4">
