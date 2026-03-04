@@ -1,8 +1,14 @@
 import React from 'react';
+import { SEO } from '../components/SEO';
 
 export function PrivacyPolicy() {
   return (
     <div className="bg-white min-h-screen py-20">
+      <SEO 
+        title="Privacy Policy"
+        description="Learn how Lumetra collects, uses, and protects your personal data."
+        canonicalUrl="https://lumetraanalytics.com/privacy-policy"
+      />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold tracking-tight text-zinc-900 mb-8">
           Privacy Policy

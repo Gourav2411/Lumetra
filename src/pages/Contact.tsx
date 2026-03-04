@@ -4,12 +4,32 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 import { SEO } from '../components/SEO';
 
 export function Contact() {
+  const schemaMarkup = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Lumetra",
+      "email": "hello@lumetra.com",
+      "telephone": "+1-555-123-4567",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Analytics Way",
+        "addressLocality": "San Francisco",
+        "addressRegion": "CA",
+        "postalCode": "94105",
+        "addressCountry": "US"
+      }
+    }
+  });
+
   return (
     <div className="bg-white min-h-screen py-20">
       <SEO 
         title="Contact Us"
         description="Have a question about our services or want to discuss a custom project? Reach out to our team."
         canonicalUrl="https://lumetraanalytics.com/contact"
+        schemaMarkup={schemaMarkup}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">

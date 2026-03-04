@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { blogs } from '../data/blogs';
 import { ArrowRight, BookOpen } from 'lucide-react';
 import { SEO } from '../components/SEO';
 
 export function Blog() {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pageParam = searchParams.get('page');
+  const currentPage = pageParam ? parseInt(pageParam, 10) : 1;
+  const validPage = !isNaN(currentPage) && currentPage > 0 ? currentPage : 1;
+  
   const postsPerPage = 12;
 
-  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfLastPost = validPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = blogs.slice(indexOfFirstPost, indexOfLastPost);
   const totalPages = Math.ceil(blogs.length / postsPerPage);
 
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber: number) => {
+    if (pageNumber === 1) {
+      setSearchParams({});
+    } else {
+      setSearchParams({ page: pageNumber.toString() });
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const schemaMarkup = JSON.stringify({
     "@context": "https://schema.org",
@@ -21,18 +32,29 @@ export function Blog() {
     "itemListElement": currentPosts.map((post, index) => ({
       "@type": "ListItem",
       "position": index + 1,
-      "url": `https://lumetraanalytics.com/blog/${post.slug}`,
-      "name": post.title
+      "item": {
+        "@type": "BlogPosting",
+        "url": `https://lumetraanalytics.com/blog/${post.slug}`,
+        "name": post.title,
+        "description": post.excerpt,
+        "keywords": post.keyword
+      }
     }))
   });
+
+  const pageKeywords = currentPosts.map(post => post.keyword).join(', ');
+  const canonicalUrl = validPage === 1 
+    ? "https://lumetraanalytics.com/blog" 
+    : `https://lumetraanalytics.com/blog?page=${validPage}`;
 
   return (
     <div className="bg-zinc-50 min-h-screen py-24">
       <SEO 
-        title="Revenue Intelligence Insights"
+        title={validPage > 1 ? `Revenue Intelligence Insights - Page ${validPage}` : "Revenue Intelligence Insights"}
         description="Expert guides and strategies on GA4 migration, BigQuery architecture, and data-driven revenue growth."
-        canonicalUrl="https://lumetraanalytics.com/blog"
+        canonicalUrl={canonicalUrl}
         schemaMarkup={schemaMarkup}
+        keywords={pageKeywords}
       />
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
@@ -79,7 +101,7 @@ export function Blog() {
                 key={index}
                 onClick={() => paginate(index + 1)}
                 className={`w-10 h-10 rounded-lg flex items-center justify-center text-sm font-medium transition-colors ${
-                  currentPage === index + 1
+                  validPage === index + 1
                     ? 'bg-zinc-900 text-white'
                     : 'bg-white text-zinc-600 border border-zinc-200 hover:bg-zinc-50'
                 }`}

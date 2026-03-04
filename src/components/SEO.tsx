@@ -6,9 +6,10 @@ interface SEOProps {
   description: string;
   canonicalUrl?: string;
   schemaMarkup?: string;
+  keywords?: string;
 }
 
-export function SEO({ title, description, canonicalUrl, schemaMarkup }: SEOProps) {
+export function SEO({ title, description, canonicalUrl, schemaMarkup, keywords }: SEOProps) {
   const siteName = 'Lumetra';
   const fullTitle = `${title} | ${siteName}`;
 
@@ -16,6 +17,7 @@ export function SEO({ title, description, canonicalUrl, schemaMarkup }: SEOProps
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      {keywords && <meta name="keywords" content={keywords} />}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />

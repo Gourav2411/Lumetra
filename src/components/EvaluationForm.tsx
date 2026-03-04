@@ -155,36 +155,43 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
     localStorage.removeItem('lumetra_evaluation_step');
   };
 
-  const isWebsiteInvalid = formData.website.length > 0 && !formData.website.startsWith('http://') && !formData.website.startsWith('https://');
+  const validateUrl = (url: string) => {
+    if (!url) return false;
+    // Allow http/https or just domain.tld
+    const pattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+    return pattern.test(url);
+  };
+
+  const isWebsiteInvalid = formData.website.length > 0 && !validateUrl(formData.website);
 
   const validateStep = (step: number) => {
     const newErrors: Record<string, string> = {};
     let isValid = true;
 
     if (step === 1) {
-      if (!formData.fullName) {
+      if (!formData.fullName.trim()) {
         newErrors.fullName = 'Full name is required';
         isValid = false;
       }
-      if (!formData.email) {
+      if (!formData.email.trim()) {
         newErrors.email = 'Email is required';
         isValid = false;
       } else {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!emailRegex.test(formData.email)) {
           newErrors.email = 'Please enter a valid work email address';
           isValid = false;
         }
       }
-      if (!formData.company) {
+      if (!formData.company.trim()) {
         newErrors.company = 'Company name is required';
         isValid = false;
       }
-      if (!formData.website) {
+      if (!formData.website.trim()) {
         newErrors.website = 'Website URL is required';
         isValid = false;
       } else if (isWebsiteInvalid) {
-        newErrors.website = 'URL must start with http:// or https://';
+        newErrors.website = 'Please enter a valid website URL (e.g., lumetra.com)';
         isValid = false;
       }
       if (!formData.businessType) {
@@ -214,15 +221,15 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
     
     if (step === 3) {
       if (!formData.exportBigQuery) {
-        newErrors.exportBigQuery = 'Please answer this question';
+        newErrors.exportBigQuery = 'Please indicate if you use BigQuery';
         isValid = false;
       }
       if (!formData.offlineConversions) {
-        newErrors.offlineConversions = 'Please answer this question';
+        newErrors.offlineConversions = 'Please indicate if you use offline conversions';
         isValid = false;
       }
       if (!formData.crmIntegrated) {
-        newErrors.crmIntegrated = 'Please answer this question';
+        newErrors.crmIntegrated = 'Please indicate if your CRM is integrated';
         isValid = false;
       }
     }
@@ -241,7 +248,14 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
     setErrors(newErrors);
     
     if (!isValid) {
-      toast.error('Please fix the errors before continuing');
+      // Show the first error message in the toast
+      const firstErrorKey = Object.keys(newErrors)[0];
+      const firstErrorMessage = newErrors[firstErrorKey];
+      toast.error(firstErrorMessage || 'Please fix the errors before continuing');
+      
+      // If the error is not in the current viewport, scroll to it? 
+      // The form is not that long, but good UX.
+      // We already scroll to top on step change, but here we stay on step.
     }
     
     return isValid;
@@ -442,7 +456,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                   <input
                     type="text"
                     className={cn(
-                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
                       errors.fullName ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
                     )}
                     value={formData.fullName}
@@ -458,7 +472,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                   <input
                     type="email"
                     className={cn(
-                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
                       errors.email ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
                     )}
                     value={formData.email}
@@ -477,7 +491,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                   <input
                     type="text"
                     className={cn(
-                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
                       errors.company ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
                     )}
                     value={formData.company}
@@ -494,7 +508,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                     type="url"
                     placeholder="https://"
                     className={cn(
-                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
                       errors.website || isWebsiteInvalid ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
                     )}
                     value={formData.website}
@@ -504,7 +518,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                     }}
                   />
                   {(errors.website || isWebsiteInvalid) && (
-                    <p className="text-sm text-red-600 mt-1">{errors.website || 'URL must start with http:// or https://'}</p>
+                    <p className="text-sm text-red-600 mt-1">{errors.website || 'Please enter a valid website URL'}</p>
                   )}
                 </div>
               </div>
@@ -514,7 +528,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                   <label className="block text-sm font-semibold text-zinc-900">Business Type</label>
                   <select
                     className={cn(
-                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
                       errors.businessType ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
                     )}
                     value={formData.businessType}
@@ -532,7 +546,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                   <label className="block text-sm font-semibold text-zinc-900">Annual Revenue Range</label>
                   <select
                     className={cn(
-                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
                       errors.revenueRange ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
                     )}
                     value={formData.revenueRange}
@@ -557,7 +571,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                   <label className="block text-sm font-semibold text-zinc-900">Monthly Ad Spend</label>
                   <select
                     className={cn(
-                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
                       errors.adSpend ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
                     )}
                     value={formData.adSpend}
@@ -575,7 +589,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                   <label className="block text-sm font-semibold text-zinc-900">Average Sales Cycle</label>
                   <select
                     className={cn(
-                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
                       errors.salesCycle ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
                     )}
                     value={formData.salesCycle}
@@ -605,7 +619,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                           if (errors.adChannels) setErrors(prev => ({ ...prev, adChannels: '' }));
                         }}
                         className={cn(
-                          "px-4 py-2 text-sm font-medium rounded-lg border transition-all",
+                          "px-4 py-2 text-sm font-medium rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2",
                           isSelected 
                             ? "bg-zinc-900 border-zinc-900 text-white" 
                             : errors.adChannels
@@ -637,7 +651,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                         if (errors.exportBigQuery) setErrors(prev => ({ ...prev, exportBigQuery: '' }));
                       }}
                       className={cn(
-                        "flex-1 py-3 text-sm font-medium rounded-xl border transition-all",
+                        "flex-1 py-3 text-sm font-medium rounded-xl border transition-all focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2",
                         formData.exportBigQuery === opt 
                           ? "bg-zinc-900 border-zinc-900 text-white" 
                           : errors.exportBigQuery
@@ -664,7 +678,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                         if (errors.offlineConversions) setErrors(prev => ({ ...prev, offlineConversions: '' }));
                       }}
                       className={cn(
-                        "flex-1 py-3 text-sm font-medium rounded-xl border transition-all",
+                        "flex-1 py-3 text-sm font-medium rounded-xl border transition-all focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2",
                         formData.offlineConversions === opt 
                           ? "bg-zinc-900 border-zinc-900 text-white" 
                           : errors.offlineConversions
@@ -691,7 +705,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                         if (errors.crmIntegrated) setErrors(prev => ({ ...prev, crmIntegrated: '' }));
                       }}
                       className={cn(
-                        "flex-1 py-3 text-sm font-medium rounded-xl border transition-all",
+                        "flex-1 py-3 text-sm font-medium rounded-xl border transition-all focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2",
                         formData.crmIntegrated === opt 
                           ? "bg-zinc-900 border-zinc-900 text-white" 
                           : errors.crmIntegrated
@@ -710,7 +724,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                 <label className="block text-sm font-semibold text-zinc-900">Biggest measurement challenge</label>
                 <textarea
                   rows={3}
-                  className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors resize-none"
+                  className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors resize-none"
                   value={formData.measurementChallenge}
                   onChange={e => setFormData({...formData, measurementChallenge: e.target.value})}
                 />
@@ -724,7 +738,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                 <label className="block text-sm font-semibold text-zinc-900">Monthly Budget Willing to Allocate for Revenue Intelligence</label>
                 <select
                   className={cn(
-                    "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
+                    "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
                     errors.budget ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
                   )}
                   value={formData.budget}
@@ -752,7 +766,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                         if (errors.timeline) setErrors(prev => ({ ...prev, timeline: '' }));
                       }}
                       className={cn(
-                        "py-3 px-4 text-sm font-medium rounded-xl border transition-all",
+                        "py-3 px-4 text-sm font-medium rounded-xl border transition-all focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2",
                         formData.timeline === opt 
                           ? "bg-zinc-900 border-zinc-900 text-white" 
                           : errors.timeline
@@ -774,7 +788,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
               <button
                 type="button"
                 onClick={prevStep}
-                className="flex items-center justify-center w-full sm:w-auto px-6 py-3 text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors"
+                className="flex items-center justify-center w-full sm:w-auto px-6 py-3 text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2 rounded-lg"
               >
                 <ChevronLeft className="w-4 h-4 mr-2" />
                 Previous
@@ -787,7 +801,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
               <button
                 type="button"
                 onClick={nextStep}
-                className="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-zinc-900 text-white text-sm font-medium rounded-xl hover:bg-zinc-800 transition-colors"
+                className="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-zinc-900 text-white text-sm font-medium rounded-xl hover:bg-zinc-800 transition-colors focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2"
               >
                 Continue
                 <ChevronRight className="w-4 h-4 ml-2" />
@@ -796,7 +810,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-zinc-900 text-white text-sm font-medium rounded-xl hover:bg-zinc-800 transition-colors disabled:opacity-70"
+                className="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-zinc-900 text-white text-sm font-medium rounded-xl hover:bg-zinc-800 transition-colors disabled:opacity-70 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2"
               >
                 {isSubmitting ? (
                   <>

@@ -4,12 +4,25 @@ import { Search, AlertCircle, FileCheck2 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 
 export function Diagnostic() {
+  const schemaMarkup = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Revenue Leak Diagnostic",
+    "provider": {
+      "@type": "Organization",
+      "name": "Lumetra"
+    },
+    "description": "Find out exactly where your tracking is broken and how much it's costing you with our comprehensive GA4 and attribution audit.",
+    "areaServed": "Worldwide"
+  });
+
   return (
     <div className="bg-white min-h-screen">
       <SEO 
         title="Revenue Leak Diagnostic"
         description="Find out exactly where your tracking is broken and how much it's costing you with our comprehensive GA4 and attribution audit."
         canonicalUrl="https://lumetraanalytics.com/diagnostic"
+        schemaMarkup={schemaMarkup}
       />
       <div className="bg-zinc-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

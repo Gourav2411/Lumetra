@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { EvaluationForm } from '../components/EvaluationForm';
+import { SEO } from '../components/SEO';
 import { 
   Database, 
   LineChart, 
@@ -24,6 +25,7 @@ const CASE_STUDIES = [
     title: 'Resolving GA4 & CRM Data Discrepancies',
     icon: Database,
     colorTheme: 'indigo',
+    image: 'https://picsum.photos/seed/ecommerce/800/600',
     challenge: "After migrating from Universal Analytics to GA4, a major e-commerce brand noticed a massive drop in reported conversions compared to their backend CRM. Stakeholders were losing trust in the data, and marketing teams couldn't accurately calculate ROAS.",
     implementation: [
       "Conducted a deep-dive data audit using GA4 DebugView and BigQuery raw data exports.",
@@ -47,6 +49,7 @@ const CASE_STUDIES = [
     title: 'Custom SQL Attribution Modeling',
     icon: LineChart,
     colorTheme: 'emerald',
+    image: 'https://picsum.photos/seed/analytics/800/600',
     challenge: "A B2B SaaS company found GA4's default data-driven attribution confusing and incompatible with their 6-month sales cycle. They needed to know the true value of their top-of-funnel content, but GA4's standard reports were heavily skewed toward last-click interactions.",
     implementation: [
       "Bypassed the GA4 UI entirely and built a custom attribution engine in BigQuery.",
@@ -70,6 +73,7 @@ const CASE_STUDIES = [
     title: 'Automated Executive Dashboards',
     icon: LayoutDashboard,
     colorTheme: 'amber',
+    image: 'https://picsum.photos/seed/dashboard/800/600',
     challenge: "The executive team at a large agency found the native GA4 interface confusing and couldn't get a unified view of marketing performance across multiple platforms. Account managers were spending 10+ hours a week manually pulling data into spreadsheets.",
     implementation: [
       "Built a centralized data warehouse architecture by piping GA4 data into BigQuery using the native daily export.",
@@ -93,6 +97,7 @@ const CASE_STUDIES = [
     title: 'Overcoming GA4 Data Thresholding',
     icon: ShieldAlert,
     colorTheme: 'rose',
+    image: 'https://picsum.photos/seed/media/800/600',
     challenge: "A large media publisher enabled Google Signals to get demographic data, but immediately noticed that GA4 started applying 'data thresholding' to their reports. Granular data for niche articles and specific user segments was being hidden from the UI to protect user privacy.",
     implementation: [
       "Shifted all core reporting from the GA4 UI to BigQuery, where data is unsampled and un-thresholded.",
@@ -116,6 +121,7 @@ const CASE_STUDIES = [
     title: 'Recovering Lost Data with Consent Mode',
     icon: ShieldCheck,
     colorTheme: 'cyan',
+    image: 'https://picsum.photos/seed/medical/800/600',
     challenge: "Strict privacy regulations (GDPR/HIPAA) and new cookie consent banners caused a 40% drop in tracked conversions. The marketing team couldn't evaluate campaign performance because users who declined cookies were completely invisible in standard reports.",
     implementation: [
       "Implemented Google Consent Mode v2 via Google Tag Manager to respect user choices dynamically.",
@@ -139,6 +145,7 @@ const CASE_STUDIES = [
     title: 'Unifying Web & App User Journeys',
     icon: Smartphone,
     colorTheme: 'blue',
+    image: 'https://picsum.photos/seed/finance/800/600',
     challenge: "Users researched financial products on the web but completed onboarding in the iOS/Android app. Universal Analytics treated these as separate users, breaking the acquisition funnel and making web content look unprofitable.",
     implementation: [
       "Set up a unified GA4 property combining Web and Firebase App data streams.",
@@ -202,6 +209,11 @@ export function CaseStudies() {
 
   return (
     <div className="bg-white min-h-screen">
+      <SEO 
+        title="Client Success Stories"
+        description="See how we've helped companies fix their tracking, build custom attribution models, and unlock growth with GA4 and BigQuery."
+        canonicalUrl="https://lumetraanalytics.com/case-studies"
+      />
       <div className="bg-zinc-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
@@ -330,19 +342,30 @@ export function CaseStudies() {
 
                     {/* Quote Block */}
                     <div className={cn(
-                      "order-1 bg-zinc-50 rounded-3xl p-8 lg:p-12 border border-zinc-200 sticky top-32",
+                      "order-1 rounded-3xl p-8 lg:p-12 border border-zinc-200 sticky top-32 relative overflow-hidden",
+                      theme.bg,
                       isEven ? "xl:order-2" : "xl:order-1"
                     )}>
-                      <blockquote className="text-xl lg:text-2xl font-medium text-zinc-900 italic mb-8 leading-relaxed">
+                      {/* Background Image */}
+                      <div 
+                        className="absolute inset-0 z-0 opacity-15 mix-blend-multiply pointer-events-none"
+                        style={{ 
+                          backgroundImage: `url(${study.image})`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center'
+                        }}
+                      />
+
+                      <blockquote className="relative z-10 text-xl lg:text-2xl font-medium text-zinc-900 italic mb-8 leading-relaxed">
                         "{study.quote}"
                       </blockquote>
-                      <div className="flex items-center gap-4">
-                        <div className="w-14 h-14 bg-zinc-200 rounded-full flex items-center justify-center text-zinc-400 font-bold text-xl">
+                      <div className="relative z-10 flex items-center gap-4">
+                        <div className="w-14 h-14 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-zinc-500 font-bold text-xl shadow-sm">
                           {study.author.charAt(0)}
                         </div>
                         <div>
                           <p className="font-bold text-zinc-900 text-lg">{study.author}</p>
-                          <p className="text-zinc-500">{study.role}</p>
+                          <p className="text-zinc-600">{study.role}</p>
                         </div>
                       </div>
                     </div>
