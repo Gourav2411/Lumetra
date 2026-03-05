@@ -235,11 +235,11 @@ blogs.forEach((blog, index) => {
   const nextBlog3 = blogs[(index + 3) % 100];
 
   blog.content += `\n\n### Learn More\n`;
-  blog.content += `To dive deeper into our premium revenue measurement architecture, visit the [Lumetra Home Page](https://lumetraanalytics.com/).\n`;
+  blog.content += `To dive deeper into our premium revenue measurement architecture, visit the [Lumetra Home Page](https://www.lumetraanalytics.com/).\n`;
   blog.content += `\n**Related Articles:**\n`;
-  blog.content += `- [${nextBlog1.title}](https://lumetraanalytics.com/blog/${nextBlog1.slug})\n`;
-  blog.content += `- [${nextBlog2.title}](https://lumetraanalytics.com/blog/${nextBlog2.slug})\n`;
-  blog.content += `- [${nextBlog3.title}](https://lumetraanalytics.com/blog/${nextBlog3.slug})\n`;
+  blog.content += `- [${nextBlog1.title}](https://www.lumetraanalytics.com/blog/${nextBlog1.slug})\n`;
+  blog.content += `- [${nextBlog2.title}](https://www.lumetraanalytics.com/blog/${nextBlog2.slug})\n`;
+  blog.content += `- [${nextBlog3.title}](https://www.lumetraanalytics.com/blog/${nextBlog3.slug})\n`;
 });
 
 const tsContent = `export interface BlogPost {

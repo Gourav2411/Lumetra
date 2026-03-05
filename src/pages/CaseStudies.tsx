@@ -212,7 +212,7 @@ export function CaseStudies() {
       <SEO 
         title="Client Success Stories"
         description="See how we've helped companies fix their tracking, build custom attribution models, and unlock growth with GA4 and BigQuery."
-        canonicalUrl="https://lumetranalytics.com/case-studies"
+        canonicalUrl="https://www.lumetraanalytics.com/case-studies"
       />
       <div className="bg-zinc-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
