@@ -9,8 +9,8 @@ export function Home() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Lumetra",
-    "url": "https://lumetraanalytics.com",
-    "logo": "https://lumetraanalytics.com/logo.png",
+    "url": "https://www.lumetraanalytics.com",
+    "logo": "https://www.lumetraanalytics.com/logo.png",
     "description": "Premium revenue measurement architecture for companies spending $30K+ per month on ads."
   });
 
@@ -19,7 +19,7 @@ export function Home() {
       <SEO 
         title="GA4 & BigQuery Revenue Intelligence"
         description="Premium revenue measurement architecture for companies spending $30K+ per month on ads. Fix your GA4 setup and build custom BigQuery models."
-        canonicalUrl="https://lumetraanalytics.com/"
+        canonicalUrl="https://www.lumetraanalytics.com/"
         schemaMarkup={schemaMarkup}
       />
       {/* Hero Section */}

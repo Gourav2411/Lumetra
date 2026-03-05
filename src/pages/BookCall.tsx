@@ -9,7 +9,7 @@ export function BookCall() {
       <SEO 
         title="Book a Call"
         description="Schedule a free 30-minute consultation to discuss your tracking challenges and how we can help you fix your GA4 setup."
-        canonicalUrl="https://lumetraanalytics.com/book-call"
+        canonicalUrl="https://www.lumetraanalytics.com/book-call"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">

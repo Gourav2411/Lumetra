@@ -21,7 +21,7 @@ export function Diagnostic() {
       <SEO 
         title="Revenue Leak Diagnostic"
         description="Find out exactly where your tracking is broken and how much it's costing you with our comprehensive GA4 and attribution audit."
-        canonicalUrl="https://lumetraanalytics.com/diagnostic"
+        canonicalUrl="https://www.lumetraanalytics.com/diagnostic"
         schemaMarkup={schemaMarkup}
       />
       <div className="bg-zinc-900 text-white py-20">

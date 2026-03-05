@@ -34,7 +34,7 @@ export function Blog() {
       "position": index + 1,
       "item": {
         "@type": "BlogPosting",
-        "url": `https://lumetraanalytics.com/blog/${post.slug}`,
+        "url": `https://www.lumetraanalytics.com/blog/${post.slug}`,
         "name": post.title,
         "description": post.excerpt,
         "keywords": post.keyword
@@ -44,8 +44,8 @@ export function Blog() {
 
   const pageKeywords = currentPosts.map(post => post.keyword).join(', ');
   const canonicalUrl = validPage === 1 
-    ? "https://lumetraanalytics.com/blog" 
-    : `https://lumetraanalytics.com/blog?page=${validPage}`;
+    ? "https://www.lumetraanalytics.com/blog" 
+    : `https://www.lumetraanalytics.com/blog?page=${validPage}`;
 
   return (
     <div className="bg-zinc-50 min-h-screen py-24">

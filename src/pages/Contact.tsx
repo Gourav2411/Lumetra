@@ -28,7 +28,7 @@ export function Contact() {
       <SEO 
         title="Contact Us"
         description="Have a question about our services or want to discuss a custom project? Reach out to our team."
-        canonicalUrl="https://lumetraanalytics.com/contact"
+        canonicalUrl="https://www.lumetraanalytics.com/contact"
         schemaMarkup={schemaMarkup}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

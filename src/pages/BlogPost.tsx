@@ -45,12 +45,12 @@ export function BlogPost() {
       "name": "Lumetra",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://lumetraanalytics.com/logo.png"
+        "url": "https://www.lumetraanalytics.com/logo.png"
       }
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://lumetraanalytics.com/blog/${post.slug}`
+      "@id": `https://www.lumetraanalytics.com/blog/${post.slug}`
     },
     "keywords": post.keyword
   });
@@ -60,7 +60,7 @@ export function BlogPost() {
       <SEO 
         title={post.title}
         description={post.excerpt}
-        canonicalUrl={`https://lumetraanalytics.com/blog/${post.slug}`}
+        canonicalUrl={`https://www.lumetraanalytics.com/blog/${post.slug}`}
         schemaMarkup={schemaMarkup}
         keywords={post.keyword}
       />
@@ -102,7 +102,7 @@ export function BlogPost() {
               <span className="text-sm font-medium text-zinc-500 mr-2">Share:</span>
               
               <a 
-                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://lumetraanalytics.com/blog/${post.slug}`)}`}
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://www.lumetraanalytics.com/blog/${post.slug}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-zinc-100 text-zinc-600 hover:bg-zinc-900 hover:text-white transition-colors"
@@ -114,7 +114,7 @@ export function BlogPost() {
               </a>
 
               <a 
-                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://lumetraanalytics.com/blog/${post.slug}`)}`}
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://www.lumetraanalytics.com/blog/${post.slug}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-zinc-100 text-zinc-600 hover:bg-[#0077b5] hover:text-white transition-colors"
@@ -126,7 +126,7 @@ export function BlogPost() {
               </a>
 
               <a 
-                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://lumetraanalytics.com/blog/${post.slug}`)}`}
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://www.lumetraanalytics.com/blog/${post.slug}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-zinc-100 text-zinc-600 hover:bg-[#1877f2] hover:text-white transition-colors"
