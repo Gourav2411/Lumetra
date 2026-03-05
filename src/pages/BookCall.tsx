@@ -7,17 +7,18 @@ export function BookCall() {
   return (
     <div className="bg-zinc-50 min-h-screen py-20">
       <SEO 
-        title="Book a Call"
-        description="Schedule a free 30-minute consultation to discuss your tracking challenges and how we can help you fix your GA4 setup."
+        title="Book a Consultation | GA4 & Digital Strategy Experts"
+        description="Schedule a free consultation with our GA4 and BigQuery experts. Discuss your digital strategy, tracking challenges, and how our consulting services can help."
+        keywords="book GA4 consultation, hire GA4 expert, digital strategy consultation"
         canonicalUrl="https://www.lumetraanalytics.com/book-call"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-zinc-900 mb-6">
-            Let's talk about your data.
+            Book a GA4 & Digital Strategy Consultation
           </h1>
           <p className="text-xl text-zinc-600 max-w-2xl mx-auto">
-            Schedule a free 30-minute consultation to discuss your tracking challenges and how we can help.
+            Schedule a free 30-minute consultation to discuss your tracking challenges and how our GA4 consulting services can help.
           </p>
         </div>
 

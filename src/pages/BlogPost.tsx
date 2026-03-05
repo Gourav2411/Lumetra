@@ -62,7 +62,7 @@ export function BlogPost() {
         description={post.excerpt}
         canonicalUrl={`https://www.lumetraanalytics.com/blog/${post.slug}`}
         schemaMarkup={schemaMarkup}
-        keywords={post.keyword}
+        keywords={`${post.keyword}, GA4 consulting, Digital Strategy, BigQuery Consulting`}
       />
       <div className="max-w-3xl mx-auto px-6 lg:px-8">
         <div className="mb-8">
@@ -183,7 +183,7 @@ export function BlogPost() {
           <div className="bg-zinc-50 rounded-2xl p-8 text-center border border-zinc-200">
             <h3 className="text-2xl font-bold text-zinc-900 mb-4">Ready to upgrade your analytics?</h3>
             <p className="text-zinc-600 mb-6 max-w-lg mx-auto">
-              Lumetra provides premium revenue measurement architecture for companies spending $30K+ per month on ads.
+              Lumetra provides premium GA4 consulting, BigQuery architecture, and digital strategy services for companies spending $30K+ per month on ads.
             </p>
             <Link 
               to="/diagnostic"

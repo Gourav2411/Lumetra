@@ -50,19 +50,19 @@ export function Blog() {
   return (
     <div className="bg-zinc-50 min-h-screen py-24">
       <SEO 
-        title={validPage > 1 ? `Revenue Intelligence Insights - Page ${validPage}` : "Revenue Intelligence Insights"}
-        description="Expert guides and strategies on GA4 migration, BigQuery architecture, and data-driven revenue growth."
+        title={validPage > 1 ? `GA4 Consulting & Digital Strategy Blog - Page ${validPage}` : "GA4 Consulting & Digital Strategy Blog"}
+        description="Expert guides, insights, and strategies on GA4 consulting, BigQuery architecture, digital strategy, and data-driven revenue growth."
         canonicalUrl={canonicalUrl}
         schemaMarkup={schemaMarkup}
-        keywords={pageKeywords}
+        keywords={`GA4 blog, BigQuery tutorials, digital strategy insights, GA4 consulting tips, ${pageKeywords}`}
       />
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h1 className="text-4xl font-bold text-zinc-900 tracking-tight sm:text-5xl mb-4">
-            Revenue Intelligence Insights
+            GA4 & Digital Strategy Insights
           </h1>
           <p className="text-lg text-zinc-600">
-            Expert guides and strategies on GA4 migration, BigQuery architecture, and data-driven revenue growth.
+            Expert guides and strategies on GA4 consulting, BigQuery architecture, and data-driven digital strategy.
           </p>
         </div>
 

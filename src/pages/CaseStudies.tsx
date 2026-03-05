@@ -208,19 +208,20 @@ export function CaseStudies() {
   };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-black min-h-screen">
       <SEO 
-        title="Client Success Stories"
-        description="See how we've helped companies fix their tracking, build custom attribution models, and unlock growth with GA4 and BigQuery."
+        title="GA4 & BigQuery Case Studies | Digital Strategy Success"
+        description="Read our case studies to see how our GA4 consulting and BigQuery services have helped companies fix tracking, build custom attribution, and unlock digital growth."
+        keywords="GA4 case studies, BigQuery success stories, digital strategy examples, GA4 consulting results"
         canonicalUrl="https://www.lumetraanalytics.com/case-studies"
       />
-      <div className="bg-zinc-900 text-white py-20">
+      <div className="bg-[#0a0a0a] border-b-8 border-[#FF9900] text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
-            Client Success Stories
+          <h1 className="text-4xl lg:text-5xl font-display font-bold uppercase tracking-widest text-[#FF9900] mb-6">
+            GA4 & BigQuery Case Studies
           </h1>
-          <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
-            See how we've helped companies fix their tracking, build custom attribution models, and unlock growth with GA4 and BigQuery.
+          <p className="text-xl text-zinc-400 max-w-2xl mx-auto font-mono">
+            See how our expert GA4 consulting and digital strategy services have helped companies fix their tracking, build custom attribution models, and unlock growth.
           </p>
         </div>
       </div>
@@ -229,17 +230,17 @@ export function CaseStudies() {
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
           
           {/* Mobile Navigation (Horizontal Scroll) */}
-          <div className="lg:hidden sticky top-16 z-40 bg-white/90 backdrop-blur-md py-4 -mx-4 px-4 border-b border-zinc-200 overflow-x-auto hide-scrollbar">
+          <div className="lg:hidden sticky top-16 z-40 bg-black/90 backdrop-blur-md py-4 -mx-4 px-4 border-b-2 border-[#333] overflow-x-auto hide-scrollbar">
             <div className="flex gap-2">
               {CASE_STUDIES.map(study => (
                 <button
                   key={study.id}
                   onClick={() => scrollTo(study.id)}
                   className={cn(
-                    "whitespace-nowrap px-4 py-2 text-sm font-medium rounded-full transition-colors border",
+                    "whitespace-nowrap px-4 py-2 text-sm font-mono uppercase tracking-widest rounded-full transition-colors border",
                     activeId === study.id
-                      ? "bg-zinc-900 text-white border-zinc-900"
-                      : "bg-white text-zinc-600 border-zinc-200 hover:border-zinc-300 hover:bg-zinc-50"
+                      ? "bg-[#FF9900] text-black border-[#FF9900] font-bold"
+                      : "bg-[#111] text-zinc-400 border-[#333] hover:border-[#FF9900] hover:text-[#FF9900]"
                   )}
                 >
                   {study.navTitle}
@@ -251,19 +252,19 @@ export function CaseStudies() {
           {/* Desktop Sidebar Navigation */}
           <div className="hidden lg:block w-64 flex-shrink-0">
             <div className="sticky top-32">
-              <h3 className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-4 px-4">
+              <h3 className="text-xs font-mono font-bold text-[#CC6666] uppercase tracking-widest mb-4 px-4">
                 Jump to Case Study
               </h3>
-              <nav className="flex flex-col border-l border-zinc-200">
+              <nav className="flex flex-col border-l-2 border-[#333]">
                 {CASE_STUDIES.map(study => (
                   <button
                     key={study.id}
                     onClick={() => scrollTo(study.id)}
                     className={cn(
-                      "text-left px-4 py-3 text-sm font-medium transition-colors border-l-2 -ml-px",
+                      "text-left px-4 py-3 text-sm font-mono uppercase tracking-widest transition-colors border-l-4 -ml-[3px]",
                       activeId === study.id
-                        ? "border-indigo-600 text-indigo-600 bg-indigo-50/50"
-                        : "border-transparent text-zinc-500 hover:text-zinc-900 hover:border-zinc-300"
+                        ? "border-[#FF9900] text-[#FF9900] bg-[#FF9900]/10 font-bold"
+                        : "border-transparent text-zinc-500 hover:text-[#99CCFF] hover:border-[#99CCFF]"
                     )}
                   >
                     {study.navTitle}
@@ -271,12 +272,12 @@ export function CaseStudies() {
                 ))}
               </nav>
               
-              <div className="mt-12 p-6 bg-zinc-50 rounded-2xl border border-zinc-200">
-                <h4 className="font-semibold text-zinc-900 mb-2">Need similar results?</h4>
-                <p className="text-sm text-zinc-600 mb-4">Let's audit your setup and find your revenue leaks.</p>
+              <div className="mt-12 p-6 bg-[#111] rounded-[2rem] rounded-tl-none border-2 border-[#333]">
+                <h4 className="font-display font-bold uppercase tracking-widest text-[#99CCFF] mb-2">Need similar results?</h4>
+                <p className="text-sm text-zinc-400 mb-4 font-mono">Let's audit your setup and find your revenue leaks.</p>
                 <Link 
                   to="/diagnostic"
-                  className="block w-full text-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors"
+                  className="block w-full text-center px-4 py-3 bg-[#CC99CC] text-black text-sm font-display font-bold uppercase tracking-widest rounded-full hover:bg-[#FF9900] transition-colors"
                 >
                   Get Diagnostic
                 </Link>
@@ -298,25 +299,25 @@ export function CaseStudies() {
                     {/* Text Content */}
                     <div className={cn("order-2", isEven ? "xl:order-1" : "xl:order-2")}>
                       <div className="flex items-center gap-3 mb-6">
-                        <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center", theme.bg)}>
-                          <Icon className={cn("w-6 h-6", theme.icon)} />
+                        <div className={cn("w-12 h-12 rounded-full flex items-center justify-center bg-[#222]")}>
+                          <Icon className={cn("w-6 h-6 text-[#FF9900]")} />
                         </div>
-                        <span className={cn("font-bold tracking-wide uppercase text-sm", theme.icon)}>
+                        <span className={cn("font-mono font-bold tracking-widest uppercase text-sm text-[#FF9900]")}>
                           {study.industry}
                         </span>
                       </div>
-                      <h2 className="text-3xl lg:text-4xl font-bold text-zinc-900 mb-6">
+                      <h2 className="text-3xl lg:text-4xl font-display font-bold uppercase tracking-widest text-[#99CCFF] mb-6">
                         {study.title}
                       </h2>
                       
-                      <div className="space-y-6 text-zinc-600 mb-8">
+                      <div className="space-y-6 text-zinc-400 mb-8 font-mono">
                         <div>
-                          <h3 className="text-lg font-semibold text-zinc-900 mb-2">The Challenge</h3>
+                          <h3 className="text-lg font-display font-bold uppercase tracking-widest text-white mb-2">The Challenge</h3>
                           <p>{study.challenge}</p>
                         </div>
                         
                         <div>
-                          <h3 className="text-lg font-semibold text-zinc-900 mb-2">Technical Implementation</h3>
+                          <h3 className="text-lg font-display font-bold uppercase tracking-widest text-white mb-2">Technical Implementation</h3>
                           <ul className="list-disc pl-5 space-y-2">
                             {study.implementation.map((item, i) => (
                               <li key={i}>{item}</li>
@@ -325,16 +326,16 @@ export function CaseStudies() {
                         </div>
 
                         <div>
-                          <h3 className="text-lg font-semibold text-zinc-900 mb-2">The Result</h3>
+                          <h3 className="text-lg font-display font-bold uppercase tracking-widest text-white mb-2">The Result</h3>
                           <p>{study.result}</p>
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-6 border-t border-zinc-100 pt-8">
+                      <div className="grid grid-cols-2 gap-6 border-t-2 border-[#333] pt-8">
                         {study.stats.map((stat, i) => (
                           <div key={i}>
-                            <p className="text-4xl font-bold text-zinc-900 mb-1">{stat.value}</p>
-                            <p className="text-sm font-medium text-zinc-500 uppercase tracking-wide">{stat.label}</p>
+                            <p className="text-4xl font-display font-bold text-[#CC6666] mb-1">{stat.value}</p>
+                            <p className="text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest">{stat.label}</p>
                           </div>
                         ))}
                       </div>
@@ -342,13 +343,12 @@ export function CaseStudies() {
 
                     {/* Quote Block */}
                     <div className={cn(
-                      "order-1 rounded-3xl p-8 lg:p-12 border border-zinc-200 sticky top-32 relative overflow-hidden",
-                      theme.bg,
+                      "order-1 rounded-[3rem] rounded-tr-none p-8 lg:p-12 border-2 border-[#FF9900] sticky top-32 relative overflow-hidden bg-[#111]",
                       isEven ? "xl:order-2" : "xl:order-1"
                     )}>
                       {/* Background Image */}
                       <div 
-                        className="absolute inset-0 z-0 opacity-15 mix-blend-multiply pointer-events-none"
+                        className="absolute inset-0 z-0 opacity-20 mix-blend-overlay pointer-events-none"
                         style={{ 
                           backgroundImage: `url(${study.image})`,
                           backgroundSize: 'cover',
@@ -356,16 +356,16 @@ export function CaseStudies() {
                         }}
                       />
 
-                      <blockquote className="relative z-10 text-xl lg:text-2xl font-medium text-zinc-900 italic mb-8 leading-relaxed">
+                      <blockquote className="relative z-10 text-xl lg:text-2xl font-mono text-[#FFCC66] italic mb-8 leading-relaxed">
                         "{study.quote}"
                       </blockquote>
                       <div className="relative z-10 flex items-center gap-4">
-                        <div className="w-14 h-14 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-zinc-500 font-bold text-xl shadow-sm">
+                        <div className="w-14 h-14 bg-[#FF9900] rounded-full flex items-center justify-center text-black font-display font-bold text-xl shadow-sm">
                           {study.author.charAt(0)}
                         </div>
                         <div>
-                          <p className="font-bold text-zinc-900 text-lg">{study.author}</p>
-                          <p className="text-zinc-600">{study.role}</p>
+                          <p className="font-display font-bold uppercase tracking-widest text-white text-lg">{study.author}</p>
+                          <p className="text-zinc-500 font-mono text-sm uppercase tracking-widest">{study.role}</p>
                         </div>
                       </div>
                     </div>
@@ -380,12 +380,12 @@ export function CaseStudies() {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-zinc-50 py-24 border-t border-zinc-200">
+      <div className="bg-[#0a0a0a] py-24 border-t-8 border-[#CC99CC]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-900 mb-6">
+          <h2 className="text-3xl lg:text-4xl font-display font-bold uppercase tracking-widest text-[#99CCFF] mb-6">
             Ready to be our next success story?
           </h2>
-          <p className="text-lg text-zinc-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-lg text-zinc-400 mb-12 max-w-2xl mx-auto font-mono">
             Get a custom action plan to fix your tracking, build accurate attribution models, and scale with confidence.
           </p>
           <div className="max-w-2xl mx-auto text-left">

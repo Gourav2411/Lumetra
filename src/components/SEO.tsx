@@ -10,7 +10,7 @@ interface SEOProps {
 }
 
 export function SEO({ title, description, canonicalUrl, schemaMarkup, keywords }: SEOProps) {
-  const siteName = 'Lumetra';
+  const siteName = 'Lumetra Analytics';
   const fullTitle = `${title} | ${siteName}`;
 
   return (

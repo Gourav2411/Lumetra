@@ -356,15 +356,15 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
 
   if (isSuccess) {
     return (
-      <div className={cn("bg-white p-6 sm:p-8 lg:p-12 rounded-2xl shadow-sm border border-zinc-200 text-center", className)}>
-        <div className="mx-auto w-16 h-16 bg-zinc-900 text-white rounded-full flex items-center justify-center mb-6">
+      <div className={cn("bg-[#111] p-6 sm:p-8 lg:p-12 rounded-[3rem] rounded-tr-none shadow-sm border-2 border-[#99CCFF] text-center", className)}>
+        <div className="mx-auto w-16 h-16 bg-[#99CCFF] text-black rounded-full flex items-center justify-center mb-6">
           <CheckCircle2 className="w-8 h-8" />
         </div>
         
         {qualificationTier === 'Priority Candidate' && (
           <>
-            <h3 className="text-2xl font-bold text-zinc-900 mb-4">Thank you.</h3>
-            <p className="text-lg text-zinc-600 mb-8 max-w-lg mx-auto">
+            <h3 className="text-2xl font-display font-bold uppercase tracking-widest text-[#99CCFF] mb-4">Transmission Received</h3>
+            <p className="text-lg text-zinc-400 mb-8 max-w-lg mx-auto font-mono">
               Based on your responses, your business appears aligned with Lumetra's revenue architecture framework. We will review your submission and reach out within 48 hours.
             </p>
           </>
@@ -372,8 +372,8 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
         
         {qualificationTier === 'Potential Fit' && (
           <>
-            <h3 className="text-2xl font-bold text-zinc-900 mb-4">Thank you.</h3>
-            <p className="text-lg text-zinc-600 mb-8 max-w-lg mx-auto">
+            <h3 className="text-2xl font-display font-bold uppercase tracking-widest text-[#99CCFF] mb-4">Transmission Received</h3>
+            <p className="text-lg text-zinc-400 mb-8 max-w-lg mx-auto font-mono">
               We will review your submission and determine whether a strategy call makes sense.
             </p>
           </>
@@ -381,19 +381,19 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
         
         {qualificationTier === 'Not Ideal Fit' && (
           <>
-            <h3 className="text-2xl font-bold text-zinc-900 mb-4">Thank you for applying.</h3>
-            <p className="text-lg text-zinc-600 mb-8 max-w-lg mx-auto">
+            <h3 className="text-2xl font-display font-bold uppercase tracking-widest text-[#99CCFF] mb-4">Transmission Received</h3>
+            <p className="text-lg text-zinc-400 mb-8 max-w-lg mx-auto font-mono">
               At this stage, Lumetra focuses on companies operating at higher revenue or ad spend thresholds. We will send you helpful resources.
             </p>
           </>
         )}
         
-        <div className="space-y-4 flex flex-col items-center pt-8 border-t border-zinc-100 w-full">
+        <div className="space-y-4 flex flex-col items-center pt-8 border-t border-[#333] w-full">
           <a 
             href="https://calendly.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-zinc-900 text-white font-medium rounded-xl hover:bg-zinc-800 transition-colors"
+            className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-[#FF9900] text-black font-display font-bold uppercase tracking-widest rounded-full hover:bg-[#FFCC66] transition-colors"
           >
             Book a Call
             <ArrowRight className="w-4 h-4 ml-2" />
@@ -401,7 +401,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
           <a 
             href={config.LEAD_MAGNET_URL}
             download
-            className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-white text-zinc-900 border border-zinc-200 font-medium rounded-xl hover:bg-zinc-50 transition-colors text-center"
+            className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-transparent text-[#99CCFF] border-2 border-[#99CCFF] font-display font-bold uppercase tracking-widest rounded-full hover:bg-[#99CCFF] hover:text-black transition-colors text-center"
           >
             <Download className="w-4 h-4 mr-2 flex-shrink-0" />
             <span>Download Free GA4 Audit Checklist</span>
@@ -412,33 +412,33 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
   }
 
   return (
-    <div id="evaluation-form" className={cn("bg-white rounded-2xl shadow-sm border border-zinc-200 overflow-hidden", className)}>
-      <div className="bg-zinc-900 px-6 py-8 sm:px-8 sm:py-10 text-center">
-        <h2 className="text-2xl lg:text-3xl font-bold text-white mb-3">Request a Revenue Intelligence Evaluation</h2>
-        <p className="text-zinc-400 max-w-2xl mx-auto">
+    <div id="evaluation-form" className={cn("bg-[#111] rounded-[3rem] rounded-tr-none shadow-sm border-2 border-[#FF9900] overflow-hidden", className)}>
+      <div className="bg-black border-b-4 border-[#CC6666] px-6 py-8 sm:px-8 sm:py-10 text-center">
+        <h2 className="text-2xl lg:text-3xl font-display font-bold uppercase tracking-widest text-[#FF9900] mb-3">Request a Revenue Intelligence Evaluation</h2>
+        <p className="text-zinc-400 max-w-2xl mx-auto font-mono">
           We offer a complimentary measurement audit. If we believe Lumetra can create meaningful impact, we will invite you to a strategy call.
         </p>
-        <p className="text-sm text-zinc-500 mt-4 font-medium tracking-wide uppercase">
+        <p className="text-xs text-[#99CCFF] mt-4 font-mono font-bold tracking-widest uppercase">
           We work with a limited number of clients each quarter.
         </p>
       </div>
 
       <div className="p-6 sm:p-8 lg:p-12">
         <div className="mb-8">
-          <div className="flex justify-between text-sm font-medium text-zinc-500 mb-3">
+          <div className="flex justify-between text-xs font-mono font-bold uppercase tracking-widest text-[#FFCC66] mb-3">
             <span>Step {currentStep} of 4</span>
             <span>{currentStep === 1 ? 'Company Profile' : currentStep === 2 ? 'Ad & Revenue Scale' : currentStep === 3 ? 'Measurement Maturity' : 'Investment Readiness'}</span>
           </div>
-          <div className="w-full bg-zinc-100 h-2 rounded-full overflow-hidden">
+          <div className="w-full bg-[#333] h-2 rounded-full overflow-hidden">
             <div 
-              className="bg-zinc-900 h-full transition-all duration-500 ease-out"
+              className="bg-[#99CCFF] h-full transition-all duration-500 ease-out"
               style={{ width: `${(currentStep / 4) * 100}%` }}
             />
           </div>
         </div>
 
         <div className="mb-8 text-center">
-          <p className="text-sm text-zinc-500 italic">
+          <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">
             Lumetra designs revenue-grade measurement systems. We evaluate each engagement carefully to ensure measurable impact.
           </p>
         </div>
@@ -452,12 +452,12 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
             <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-zinc-900">Full Name</label>
+                  <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Full Name</label>
                   <input
                     type="text"
                     className={cn(
-                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
-                      errors.fullName ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                      "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
+                      errors.fullName ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
                     )}
                     value={formData.fullName}
                     onChange={e => {
@@ -468,12 +468,12 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                   {errors.fullName && <p className="text-sm text-red-600 mt-1">{errors.fullName}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-zinc-900">Work Email</label>
+                  <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Work Email</label>
                   <input
                     type="email"
                     className={cn(
-                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
-                      errors.email ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                      "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
+                      errors.email ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
                     )}
                     value={formData.email}
                     onChange={e => {
@@ -487,12 +487,12 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-zinc-900">Company Name</label>
+                  <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Company Name</label>
                   <input
                     type="text"
                     className={cn(
-                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
-                      errors.company ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                      "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
+                      errors.company ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
                     )}
                     value={formData.company}
                     onChange={e => {
@@ -503,13 +503,13 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                   {errors.company && <p className="text-sm text-red-600 mt-1">{errors.company}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-zinc-900">Website URL</label>
+                  <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Website URL</label>
                   <input
                     type="url"
                     placeholder="https://"
                     className={cn(
-                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
-                      errors.website || isWebsiteInvalid ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                      "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
+                      errors.website || isWebsiteInvalid ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
                     )}
                     value={formData.website}
                     onChange={e => {
@@ -525,11 +525,11 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-zinc-900">Business Type</label>
+                  <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Business Type</label>
                   <select
                     className={cn(
-                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
-                      errors.businessType ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                      "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
+                      errors.businessType ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
                     )}
                     value={formData.businessType}
                     onChange={e => {
@@ -543,11 +543,11 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                   {errors.businessType && <p className="text-sm text-red-600 mt-1">{errors.businessType}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-zinc-900">Annual Revenue Range</label>
+                  <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Annual Revenue Range</label>
                   <select
                     className={cn(
-                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
-                      errors.revenueRange ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                      "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
+                      errors.revenueRange ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
                     )}
                     value={formData.revenueRange}
                     onChange={e => {
@@ -568,11 +568,11 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-zinc-900">Monthly Ad Spend</label>
+                  <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Monthly Ad Spend</label>
                   <select
                     className={cn(
-                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
-                      errors.adSpend ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                      "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
+                      errors.adSpend ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
                     )}
                     value={formData.adSpend}
                     onChange={e => {
@@ -586,11 +586,11 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                   {errors.adSpend && <p className="text-sm text-red-600 mt-1">{errors.adSpend}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-zinc-900">Average Sales Cycle</label>
+                  <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Average Sales Cycle</label>
                   <select
                     className={cn(
-                      "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
-                      errors.salesCycle ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                      "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
+                      errors.salesCycle ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
                     )}
                     value={formData.salesCycle}
                     onChange={e => {
@@ -606,7 +606,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
               </div>
 
               <div className="space-y-3">
-                <label className="block text-sm font-semibold text-zinc-900">Primary Ad Channels</label>
+                <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Primary Ad Channels</label>
                 <div className="flex flex-wrap gap-3">
                   {AD_CHANNELS.map(channel => {
                     const isSelected = formData.adChannels.includes(channel);
@@ -619,12 +619,12 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                           if (errors.adChannels) setErrors(prev => ({ ...prev, adChannels: '' }));
                         }}
                         className={cn(
-                          "px-4 py-2 text-sm font-medium rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2",
+                          "px-4 py-2 text-sm font-mono uppercase tracking-widest rounded-full border transition-all focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:ring-offset-2 focus:ring-offset-black",
                           isSelected 
-                            ? "bg-zinc-900 border-zinc-900 text-white" 
+                            ? "bg-[#FF9900] border-[#FF9900] text-black font-bold" 
                             : errors.adChannels
-                              ? "bg-white border-red-300 text-zinc-600 hover:border-red-400"
-                              : "bg-white border-zinc-200 text-zinc-600 hover:border-zinc-400"
+                              ? "bg-[#222] border-[#CC6666] text-[#CC6666] hover:border-[#FF9900]"
+                              : "bg-[#222] border-[#444] text-zinc-400 hover:border-[#FF9900] hover:text-[#FF9900]"
                         )}
                       >
                         {channel}
@@ -640,7 +640,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
           {currentStep === 3 && (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="space-y-3">
-                <label className="block text-sm font-semibold text-zinc-900">Do you export GA4 data to BigQuery?</label>
+                <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Do you export GA4 data to BigQuery?</label>
                 <div className="flex flex-col sm:flex-row gap-3">
                   {YES_NO_SURE.map(opt => (
                     <button
@@ -651,12 +651,12 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                         if (errors.exportBigQuery) setErrors(prev => ({ ...prev, exportBigQuery: '' }));
                       }}
                       className={cn(
-                        "flex-1 py-3 text-sm font-medium rounded-xl border transition-all focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2",
+                        "flex-1 py-3 text-sm font-mono uppercase tracking-widest rounded-full border transition-all focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:ring-offset-2 focus:ring-offset-black",
                         formData.exportBigQuery === opt 
-                          ? "bg-zinc-900 border-zinc-900 text-white" 
+                          ? "bg-[#FF9900] border-[#FF9900] text-black font-bold" 
                           : errors.exportBigQuery
-                            ? "bg-red-50 border-red-300 text-red-700 hover:border-red-400"
-                            : "bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-400"
+                            ? "bg-[#222] border-[#CC6666] text-[#CC6666] hover:border-[#FF9900]"
+                            : "bg-[#222] border-[#444] text-zinc-400 hover:border-[#FF9900] hover:text-[#FF9900]"
                       )}
                     >
                       {opt}
@@ -667,7 +667,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
               </div>
 
               <div className="space-y-3">
-                <label className="block text-sm font-semibold text-zinc-900">Do you use offline conversion imports?</label>
+                <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Do you use offline conversion imports?</label>
                 <div className="flex flex-col sm:flex-row gap-3">
                   {YES_NO_SURE.map(opt => (
                     <button
@@ -678,12 +678,12 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                         if (errors.offlineConversions) setErrors(prev => ({ ...prev, offlineConversions: '' }));
                       }}
                       className={cn(
-                        "flex-1 py-3 text-sm font-medium rounded-xl border transition-all focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2",
+                        "flex-1 py-3 text-sm font-mono uppercase tracking-widest rounded-full border transition-all focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:ring-offset-2 focus:ring-offset-black",
                         formData.offlineConversions === opt 
-                          ? "bg-zinc-900 border-zinc-900 text-white" 
+                          ? "bg-[#FF9900] border-[#FF9900] text-black font-bold" 
                           : errors.offlineConversions
-                            ? "bg-red-50 border-red-300 text-red-700 hover:border-red-400"
-                            : "bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-400"
+                            ? "bg-[#222] border-[#CC6666] text-[#CC6666] hover:border-[#FF9900]"
+                            : "bg-[#222] border-[#444] text-zinc-400 hover:border-[#FF9900] hover:text-[#FF9900]"
                       )}
                     >
                       {opt}
@@ -694,7 +694,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
               </div>
 
               <div className="space-y-3">
-                <label className="block text-sm font-semibold text-zinc-900">Is your CRM integrated with revenue reporting?</label>
+                <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Is your CRM integrated with revenue reporting?</label>
                 <div className="flex flex-col sm:flex-row gap-3">
                   {YES_NO_PARTIAL.map(opt => (
                     <button
@@ -705,12 +705,12 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                         if (errors.crmIntegrated) setErrors(prev => ({ ...prev, crmIntegrated: '' }));
                       }}
                       className={cn(
-                        "flex-1 py-3 text-sm font-medium rounded-xl border transition-all focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2",
+                        "flex-1 py-3 text-sm font-mono uppercase tracking-widest rounded-full border transition-all focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:ring-offset-2 focus:ring-offset-black",
                         formData.crmIntegrated === opt 
-                          ? "bg-zinc-900 border-zinc-900 text-white" 
+                          ? "bg-[#FF9900] border-[#FF9900] text-black font-bold" 
                           : errors.crmIntegrated
-                            ? "bg-red-50 border-red-300 text-red-700 hover:border-red-400"
-                            : "bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-400"
+                            ? "bg-[#222] border-[#CC6666] text-[#CC6666] hover:border-[#FF9900]"
+                            : "bg-[#222] border-[#444] text-zinc-400 hover:border-[#FF9900] hover:text-[#FF9900]"
                       )}
                     >
                       {opt}
@@ -721,10 +721,10 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
               </div>
 
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-zinc-900">Biggest measurement challenge</label>
+                <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Biggest measurement challenge</label>
                 <textarea
                   rows={3}
-                  className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors resize-none"
+                  className="w-full px-4 py-3 bg-[#222] text-white border border-[#444] rounded-none rounded-l-[2rem] focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors resize-none font-mono"
                   value={formData.measurementChallenge}
                   onChange={e => setFormData({...formData, measurementChallenge: e.target.value})}
                 />
@@ -735,11 +735,11 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
           {currentStep === 4 && (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-zinc-900">Monthly Budget Willing to Allocate for Revenue Intelligence</label>
+                <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Monthly Budget Willing to Allocate for Revenue Intelligence</label>
                 <select
                   className={cn(
-                    "w-full px-4 py-3 bg-zinc-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-colors",
-                    errors.budget ? "border-red-500 focus:ring-red-500 focus:border-red-500" : "border-zinc-200"
+                    "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
+                    errors.budget ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
                   )}
                   value={formData.budget}
                   onChange={e => {
@@ -751,11 +751,11 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                   {BUDGET_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                 </select>
                 {errors.budget && <p className="text-sm text-red-600 mt-1">{errors.budget}</p>}
-                <p className="text-xs text-zinc-500 mt-2">Lumetra engagements typically start at 5K per month.</p>
+                <p className="text-xs text-zinc-500 mt-2 font-mono uppercase tracking-widest">Lumetra engagements typically start at 5K per month.</p>
               </div>
 
               <div className="space-y-3">
-                <label className="block text-sm font-semibold text-zinc-900">Timeline to start</label>
+                <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Timeline to start</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {TIMELINE_OPTIONS.map(opt => (
                     <button
@@ -766,12 +766,12 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                         if (errors.timeline) setErrors(prev => ({ ...prev, timeline: '' }));
                       }}
                       className={cn(
-                        "py-3 px-4 text-sm font-medium rounded-xl border transition-all focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2",
+                        "py-3 px-4 text-sm font-mono uppercase tracking-widest rounded-full border transition-all focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:ring-offset-2 focus:ring-offset-black",
                         formData.timeline === opt 
-                          ? "bg-zinc-900 border-zinc-900 text-white" 
+                          ? "bg-[#FF9900] border-[#FF9900] text-black font-bold" 
                           : errors.timeline
-                            ? "bg-red-50 border-red-300 text-red-700 hover:border-red-400"
-                            : "bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-400"
+                            ? "bg-[#222] border-[#CC6666] text-[#CC6666] hover:border-[#FF9900]"
+                            : "bg-[#222] border-[#444] text-zinc-400 hover:border-[#FF9900] hover:text-[#FF9900]"
                       )}
                     >
                       {opt}
@@ -783,12 +783,12 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
             </div>
           )}
 
-          <div className="pt-8 border-t border-zinc-100 flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
+          <div className="pt-8 border-t border-[#333] flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
             {currentStep > 1 ? (
               <button
                 type="button"
                 onClick={prevStep}
-                className="flex items-center justify-center w-full sm:w-auto px-6 py-3 text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2 rounded-lg"
+                className="flex items-center justify-center w-full sm:w-auto px-6 py-3 text-sm font-display font-bold uppercase tracking-widest text-[#99CCFF] hover:text-[#FFCC66] transition-colors focus:outline-none rounded-full border border-[#99CCFF] hover:border-[#FFCC66]"
               >
                 <ChevronLeft className="w-4 h-4 mr-2" />
                 Previous
@@ -801,7 +801,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
               <button
                 type="button"
                 onClick={nextStep}
-                className="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-zinc-900 text-white text-sm font-medium rounded-xl hover:bg-zinc-800 transition-colors focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2"
+                className="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-[#FF9900] text-black font-display font-bold uppercase tracking-widest rounded-full hover:bg-[#FFCC66] transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:ring-offset-2 focus:ring-offset-black"
               >
                 Continue
                 <ChevronRight className="w-4 h-4 ml-2" />
@@ -810,7 +810,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-zinc-900 text-white text-sm font-medium rounded-xl hover:bg-zinc-800 transition-colors disabled:opacity-70 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2"
+                className="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-[#CC6666] text-black font-display font-bold uppercase tracking-widest rounded-full hover:bg-[#FF9900] transition-colors focus:outline-none focus:ring-2 focus:ring-[#CC6666] focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
