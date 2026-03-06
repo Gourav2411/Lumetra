@@ -9,6 +9,7 @@ export function Layout() {
     { name: 'Home', path: '/' },
     { name: 'Case Studies', path: '/case-studies' },
     { name: 'Diagnostic', path: '/diagnostic' },
+    { name: 'Tools', path: '/tools' },
     { name: 'Blog', path: '/blog' },
     { name: 'Book a Call', path: '/book-call' },
     { name: 'Contact', path: '/contact' },
@@ -77,7 +78,7 @@ export function Layout() {
               <ul className="space-y-4 text-sm text-zinc-400 font-light">
                 <li><Link to="/diagnostic" className="hover:text-[#D4AF37] transition-colors">GA4 Audit & Diagnostic</Link></li>
                 <li><Link to="/case-studies" className="hover:text-[#D4AF37] transition-colors">GA4 Case Studies</Link></li>
-                <li><Link to="/" className="hover:text-[#D4AF37] transition-colors">BigQuery Consulting</Link></li>
+                <li><Link to="/tools" className="hover:text-[#D4AF37] transition-colors">Analytics Tools</Link></li>
                 <li><Link to="/" className="hover:text-[#D4AF37] transition-colors">Digital Strategy</Link></li>
               </ul>
             </div>

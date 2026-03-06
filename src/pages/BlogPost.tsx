@@ -36,12 +36,14 @@ export function BlogPost() {
 
   const schemaMarkup = JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     "headline": post.title,
     "description": post.excerpt,
+    "image": "https://www.lumetraanalytics.com/logo.png",
     "author": {
       "@type": "Organization",
-      "name": "Lumetra Team"
+      "name": "Lumetra Team",
+      "url": "https://www.lumetraanalytics.com"
     },
     "publisher": {
       "@type": "Organization",
@@ -55,6 +57,8 @@ export function BlogPost() {
       "@type": "WebPage",
       "@id": `https://www.lumetraanalytics.com/blog/${post.slug}`
     },
+    "datePublished": "2024-01-01T08:00:00Z",
+    "dateModified": new Date().toISOString(),
     "keywords": post.keyword
   });
 
@@ -69,29 +73,42 @@ export function BlogPost() {
         keywords={`${post.keyword}, GA4 consulting, Digital Strategy, BigQuery Consulting`}
       />
       <div className="max-w-3xl mx-auto px-6 lg:px-8 relative z-10">
-        <div className="mb-8">
+        <div className="mb-12">
           <Link 
             to="/blog"
-            className="inline-flex items-center text-xs font-mono uppercase tracking-widest text-[#5B8FB9] hover:text-white transition-colors mb-8"
+            className="inline-flex items-center text-xs font-mono uppercase tracking-widest text-[#5B8FB9] hover:text-white transition-colors mb-12"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to all articles
           </Link>
           
-          <div className="flex items-center gap-4 text-xs font-mono uppercase tracking-widest text-zinc-500 mb-6">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="h-[1px] w-12 bg-[#D4AF37]"></div>
+            <span className="font-mono text-[#D4AF37] tracking-widest uppercase text-xs">Article</span>
+          </div>
+
+          <div className="flex items-center gap-4 text-xs font-mono uppercase tracking-widest text-zinc-500 mb-8">
             <div className="flex items-center">
               <BookOpen className="w-4 h-4 mr-2 text-[#D4AF37]" />
               <span className="text-[#D4AF37] bg-[#D4AF37]/10 border border-[#D4AF37]/30 px-3 py-1 rounded-full">{post.keyword}</span>
             </div>
             <span className="w-1 h-1 rounded-full bg-white/20"></span>
             <span>5 min read</span>
+            <span className="w-1 h-1 rounded-full bg-white/20"></span>
+            <span>{new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
           </div>
           
-          <h1 className="text-4xl font-display font-light text-white tracking-tight sm:text-5xl lg:text-6xl mb-8 leading-[1.1]">
+          <h1 className="text-4xl font-display font-light text-white tracking-tight sm:text-5xl lg:text-7xl mb-6 leading-[1.1]">
             {post.title}
           </h1>
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 py-6 border-y border-white/10 mb-12">
+          <p className="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed mb-12 max-w-3xl">
+            {post.excerpt}
+          </p>
+
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 py-8 border-y border-white/10 mb-16 relative">
+            <div className="absolute left-0 top-0 w-32 h-[1px] bg-[#D4AF37]"></div>
+            <div className="absolute right-0 bottom-0 w-32 h-[1px] bg-[#5B8FB9]"></div>
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full border border-[#5B8FB9]/30 bg-[#5B8FB9]/5 flex items-center justify-center text-[#5B8FB9] font-display font-light text-xl">
                 L
@@ -140,20 +157,32 @@ export function BlogPost() {
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                 </svg>
               </a>
+
+              <a 
+                href={`mailto:?subject=${encodeURIComponent(post.title)}&body=${encodeURIComponent(`Check out this article: ${post.title}\n\nhttps://www.lumetraanalytics.com/blog/${post.slug}`)}`}
+                className="p-2 rounded-full border border-white/10 bg-transparent text-zinc-400 hover:bg-white/5 hover:text-white hover:border-white/30 transition-colors"
+                aria-label="Share via Email"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </a>
             </div>
           </div>
         </div>
 
         <div className="prose prose-invert md:prose-lg max-w-none 
           prose-headings:font-display prose-headings:font-light prose-headings:tracking-tight prose-headings:text-white
-          prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
-          prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-          prose-p:text-zinc-300 prose-p:font-light prose-p:leading-relaxed prose-p:mb-8
-          prose-a:text-[#5B8FB9] prose-a:font-medium prose-a:underline-offset-4 hover:prose-a:text-white transition-colors
-          prose-blockquote:border-l-2 prose-blockquote:border-[#D4AF37] prose-blockquote:bg-[#D4AF37]/5 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:not-italic prose-blockquote:font-light prose-blockquote:text-zinc-300
-          prose-li:marker:text-[#5B8FB9] prose-li:text-zinc-300 prose-li:font-light prose-li:leading-relaxed prose-li:mb-2
+          prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:pb-4 prose-h2:border-b prose-h2:border-white/10
+          prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-6 prose-h3:text-[#5B8FB9]
+          prose-p:text-zinc-300 prose-p:font-light prose-p:leading-relaxed prose-p:mb-8 prose-p:text-lg
+          prose-a:text-[#D4AF37] prose-a:font-medium prose-a:underline-offset-4 hover:prose-a:text-white transition-colors
+          prose-blockquote:border-l-2 prose-blockquote:border-[#D4AF37] prose-blockquote:bg-gradient-to-r prose-blockquote:from-[#D4AF37]/10 prose-blockquote:to-transparent prose-blockquote:py-6 prose-blockquote:px-8 prose-blockquote:rounded-r-2xl prose-blockquote:not-italic prose-blockquote:font-light prose-blockquote:text-white prose-blockquote:text-xl prose-blockquote:my-12
+          prose-li:marker:text-[#5B8FB9] prose-li:text-zinc-300 prose-li:font-light prose-li:leading-relaxed prose-li:mb-3
+          prose-ul:my-8 prose-ol:my-8
           prose-strong:text-white prose-strong:font-medium
-          prose-img:rounded-2xl prose-img:border prose-img:border-white/10">
+          prose-img:rounded-3xl prose-img:border prose-img:border-white/10 prose-img:shadow-2xl prose-img:my-12">
           <ReactMarkdown
             components={{
               a: ({ node, href, children, ...props }: any) => {

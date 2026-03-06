@@ -15,6 +15,8 @@ import { CaseStudies } from './pages/CaseStudies';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
+import { Tools } from './pages/Tools';
+import { DigitalStrategyTool } from './pages/DigitalStrategyTool';
 
 export default function App() {
   return (
@@ -29,6 +31,8 @@ export default function App() {
             <Route path="book-call" element={<BookCall />} />
             <Route path="blog" element={<Blog />} />
             <Route path="blog/:slug" element={<BlogPost />} />
+            <Route path="tools" element={<Tools />} />
+            <Route path="tools/digital-strategy" element={<DigitalStrategyTool />} />
             <Route path="contact" element={<Contact />} />
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
           </Route>

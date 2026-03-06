@@ -78,15 +78,15 @@ export function Blog() {
               <div className="absolute top-0 right-0 w-16 h-[1px] bg-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="absolute bottom-0 left-0 w-[1px] h-16 bg-[#5B8FB9] opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="p-8 flex-1 flex flex-col">
-                <div className="flex items-center text-[10px] font-mono uppercase tracking-widest text-[#D4AF37] mb-4">
+                <div className="flex items-center text-[10px] font-mono uppercase tracking-widest text-[#D4AF37] mb-6">
                   <span className="bg-[#D4AF37]/10 border border-[#D4AF37]/30 px-3 py-1 rounded-full">{post.keyword}</span>
                 </div>
-                <h2 className="text-xl font-display font-medium text-white mb-4 line-clamp-2">
+                <h2 className="text-2xl font-display font-light text-white mb-4 line-clamp-2 leading-snug">
                   <Link to={`/blog/${post.slug}`} className="hover:text-[#5B8FB9] transition-colors">
                     {post.title}
                   </Link>
                 </h2>
-                <p className="text-zinc-400 mb-8 line-clamp-3 flex-1 font-light leading-relaxed text-sm">
+                <p className="text-zinc-400 mb-8 line-clamp-3 flex-1 font-light leading-relaxed">
                   {post.excerpt}
                 </p>
                 <Link 
