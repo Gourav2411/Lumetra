@@ -356,15 +356,15 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
 
   if (isSuccess) {
     return (
-      <div className={cn("bg-[#111] p-6 sm:p-8 lg:p-12 rounded-[3rem] rounded-tr-none shadow-sm border-2 border-[#99CCFF] text-center", className)}>
-        <div className="mx-auto w-16 h-16 bg-[#99CCFF] text-black rounded-full flex items-center justify-center mb-6">
+      <div className={cn("bg-[#050505] p-6 sm:p-8 lg:p-12 rounded-3xl shadow-sm border border-white/10 text-center backdrop-blur-sm", className)}>
+        <div className="mx-auto w-16 h-16 border border-[#5B8FB9]/30 bg-[#5B8FB9]/10 text-[#5B8FB9] rounded-full flex items-center justify-center mb-6">
           <CheckCircle2 className="w-8 h-8" />
         </div>
         
         {qualificationTier === 'Priority Candidate' && (
           <>
-            <h3 className="text-2xl font-display font-bold uppercase tracking-widest text-[#99CCFF] mb-4">Transmission Received</h3>
-            <p className="text-lg text-zinc-400 mb-8 max-w-lg mx-auto font-mono">
+            <h3 className="text-2xl font-display font-light tracking-tight text-white mb-4">Transmission Received</h3>
+            <p className="text-lg text-zinc-400 mb-8 max-w-lg mx-auto font-light leading-relaxed">
               Based on your responses, your business appears aligned with Lumetra's revenue architecture framework. We will review your submission and reach out within 48 hours.
             </p>
           </>
@@ -372,8 +372,8 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
         
         {qualificationTier === 'Potential Fit' && (
           <>
-            <h3 className="text-2xl font-display font-bold uppercase tracking-widest text-[#99CCFF] mb-4">Transmission Received</h3>
-            <p className="text-lg text-zinc-400 mb-8 max-w-lg mx-auto font-mono">
+            <h3 className="text-2xl font-display font-light tracking-tight text-white mb-4">Transmission Received</h3>
+            <p className="text-lg text-zinc-400 mb-8 max-w-lg mx-auto font-light leading-relaxed">
               We will review your submission and determine whether a strategy call makes sense.
             </p>
           </>
@@ -381,19 +381,19 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
         
         {qualificationTier === 'Not Ideal Fit' && (
           <>
-            <h3 className="text-2xl font-display font-bold uppercase tracking-widest text-[#99CCFF] mb-4">Transmission Received</h3>
-            <p className="text-lg text-zinc-400 mb-8 max-w-lg mx-auto font-mono">
+            <h3 className="text-2xl font-display font-light tracking-tight text-white mb-4">Transmission Received</h3>
+            <p className="text-lg text-zinc-400 mb-8 max-w-lg mx-auto font-light leading-relaxed">
               At this stage, Lumetra focuses on companies operating at higher revenue or ad spend thresholds. We will send you helpful resources.
             </p>
           </>
         )}
         
-        <div className="space-y-4 flex flex-col items-center pt-8 border-t border-[#333] w-full">
+        <div className="space-y-4 flex flex-col items-center pt-8 border-t border-white/10 w-full">
           <a 
             href="https://calendly.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-[#FF9900] text-black font-display font-bold uppercase tracking-widest rounded-full hover:bg-[#FFCC66] transition-colors"
+            className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-[#D4AF37] text-black font-mono text-sm uppercase tracking-widest rounded-full hover:bg-[#C5A059] transition-colors"
           >
             Book a Call
             <ArrowRight className="w-4 h-4 ml-2" />
@@ -401,7 +401,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
           <a 
             href={config.LEAD_MAGNET_URL}
             download
-            className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-transparent text-[#99CCFF] border-2 border-[#99CCFF] font-display font-bold uppercase tracking-widest rounded-full hover:bg-[#99CCFF] hover:text-black transition-colors text-center"
+            className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-transparent text-white border border-white/20 font-mono text-sm uppercase tracking-widest rounded-full hover:bg-white/5 transition-colors text-center"
           >
             <Download className="w-4 h-4 mr-2 flex-shrink-0" />
             <span>Download Free GA4 Audit Checklist</span>
@@ -412,32 +412,34 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
   }
 
   return (
-    <div id="evaluation-form" className={cn("bg-[#111] rounded-[3rem] rounded-tr-none shadow-sm border-2 border-[#FF9900] overflow-hidden", className)}>
-      <div className="bg-black border-b-4 border-[#CC6666] px-6 py-8 sm:px-8 sm:py-10 text-center">
-        <h2 className="text-2xl lg:text-3xl font-display font-bold uppercase tracking-widest text-[#FF9900] mb-3">Request a Revenue Intelligence Evaluation</h2>
-        <p className="text-zinc-400 max-w-2xl mx-auto font-mono">
+    <div id="evaluation-form" className={cn("bg-[#050505] rounded-3xl shadow-sm border border-white/10 overflow-hidden backdrop-blur-sm", className)}>
+      <div className="bg-[#0A0A0A] border-b border-white/10 px-6 py-8 sm:px-8 sm:py-10 text-center relative">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent"></div>
+        <h2 className="text-2xl lg:text-3xl font-display font-light tracking-tight text-white mb-4">Request a Revenue Intelligence Evaluation</h2>
+        <p className="text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed">
           We offer a complimentary measurement audit. If we believe Lumetra can create meaningful impact, we will invite you to a strategy call.
         </p>
-        <p className="text-xs text-[#99CCFF] mt-4 font-mono font-bold tracking-widest uppercase">
+        <p className="text-xs text-[#5B8FB9] mt-6 font-mono uppercase tracking-widest flex items-center justify-center gap-2">
+          <span className="w-1 h-1 rounded-full bg-[#5B8FB9]"></span>
           We work with a limited number of clients each quarter.
         </p>
       </div>
 
       <div className="p-6 sm:p-8 lg:p-12">
-        <div className="mb-8">
-          <div className="flex justify-between text-xs font-mono font-bold uppercase tracking-widest text-[#FFCC66] mb-3">
+        <div className="mb-10">
+          <div className="flex justify-between text-xs font-mono uppercase tracking-widest text-[#D4AF37] mb-4">
             <span>Step {currentStep} of 4</span>
             <span>{currentStep === 1 ? 'Company Profile' : currentStep === 2 ? 'Ad & Revenue Scale' : currentStep === 3 ? 'Measurement Maturity' : 'Investment Readiness'}</span>
           </div>
-          <div className="w-full bg-[#333] h-2 rounded-full overflow-hidden">
+          <div className="w-full bg-white/5 h-[2px] overflow-hidden">
             <div 
-              className="bg-[#99CCFF] h-full transition-all duration-500 ease-out"
+              className="bg-[#D4AF37] h-full transition-all duration-500 ease-out"
               style={{ width: `${(currentStep / 4) * 100}%` }}
             />
           </div>
         </div>
 
-        <div className="mb-8 text-center">
+        <div className="mb-10 text-center">
           <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">
             Lumetra designs revenue-grade measurement systems. We evaluate each engagement carefully to ensure measurable impact.
           </p>
@@ -452,12 +454,12 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
             <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Full Name</label>
+                  <label className="block text-xs font-mono uppercase tracking-widest text-[#5B8FB9]">Full Name</label>
                   <input
                     type="text"
                     className={cn(
-                      "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
-                      errors.fullName ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
+                      "w-full px-4 py-3 bg-[#0A0A0A] text-white border rounded-lg focus:outline-none focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-colors font-mono text-sm",
+                      errors.fullName ? "border-[#7A2021] focus:ring-[#7A2021] focus:border-[#7A2021]" : "border-white/10"
                     )}
                     value={formData.fullName}
                     onChange={e => {
@@ -465,15 +467,15 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                       if (errors.fullName) setErrors(prev => ({ ...prev, fullName: '' }));
                     }}
                   />
-                  {errors.fullName && <p className="text-sm text-red-600 mt-1">{errors.fullName}</p>}
+                  {errors.fullName && <p className="text-xs text-[#7A2021] mt-1 font-mono">{errors.fullName}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Work Email</label>
+                  <label className="block text-xs font-mono uppercase tracking-widest text-[#5B8FB9]">Work Email</label>
                   <input
                     type="email"
                     className={cn(
-                      "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
-                      errors.email ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
+                      "w-full px-4 py-3 bg-[#0A0A0A] text-white border rounded-lg focus:outline-none focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-colors font-mono text-sm",
+                      errors.email ? "border-[#7A2021] focus:ring-[#7A2021] focus:border-[#7A2021]" : "border-white/10"
                     )}
                     value={formData.email}
                     onChange={e => {
@@ -481,18 +483,18 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                       if (errors.email) setErrors(prev => ({ ...prev, email: '' }));
                     }}
                   />
-                  {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email}</p>}
+                  {errors.email && <p className="text-xs text-[#7A2021] mt-1 font-mono">{errors.email}</p>}
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Company Name</label>
+                  <label className="block text-xs font-mono uppercase tracking-widest text-[#5B8FB9]">Company Name</label>
                   <input
                     type="text"
                     className={cn(
-                      "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
-                      errors.company ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
+                      "w-full px-4 py-3 bg-[#0A0A0A] text-white border rounded-lg focus:outline-none focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-colors font-mono text-sm",
+                      errors.company ? "border-[#7A2021] focus:ring-[#7A2021] focus:border-[#7A2021]" : "border-white/10"
                     )}
                     value={formData.company}
                     onChange={e => {
@@ -500,16 +502,16 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                       if (errors.company) setErrors(prev => ({ ...prev, company: '' }));
                     }}
                   />
-                  {errors.company && <p className="text-sm text-red-600 mt-1">{errors.company}</p>}
+                  {errors.company && <p className="text-xs text-[#7A2021] mt-1 font-mono">{errors.company}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Website URL</label>
+                  <label className="block text-xs font-mono uppercase tracking-widest text-[#5B8FB9]">Website URL</label>
                   <input
                     type="url"
                     placeholder="https://"
                     className={cn(
-                      "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
-                      errors.website || isWebsiteInvalid ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
+                      "w-full px-4 py-3 bg-[#0A0A0A] text-white border rounded-lg focus:outline-none focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-colors font-mono text-sm",
+                      errors.website || isWebsiteInvalid ? "border-[#7A2021] focus:ring-[#7A2021] focus:border-[#7A2021]" : "border-white/10"
                     )}
                     value={formData.website}
                     onChange={e => {
@@ -518,18 +520,18 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                     }}
                   />
                   {(errors.website || isWebsiteInvalid) && (
-                    <p className="text-sm text-red-600 mt-1">{errors.website || 'Please enter a valid website URL'}</p>
+                    <p className="text-xs text-[#7A2021] mt-1 font-mono">{errors.website || 'Please enter a valid website URL'}</p>
                   )}
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Business Type</label>
+                  <label className="block text-xs font-mono uppercase tracking-widest text-[#5B8FB9]">Business Type</label>
                   <select
                     className={cn(
-                      "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
-                      errors.businessType ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
+                      "w-full px-4 py-3 bg-[#0A0A0A] text-white border rounded-lg focus:outline-none focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-colors font-mono text-sm",
+                      errors.businessType ? "border-[#7A2021] focus:ring-[#7A2021] focus:border-[#7A2021]" : "border-white/10"
                     )}
                     value={formData.businessType}
                     onChange={e => {
@@ -540,14 +542,14 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                     <option value="" disabled>Select type</option>
                     {BUSINESS_TYPE_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                   </select>
-                  {errors.businessType && <p className="text-sm text-red-600 mt-1">{errors.businessType}</p>}
+                  {errors.businessType && <p className="text-xs text-[#7A2021] mt-1 font-mono">{errors.businessType}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Annual Revenue Range</label>
+                  <label className="block text-xs font-mono uppercase tracking-widest text-[#5B8FB9]">Annual Revenue Range</label>
                   <select
                     className={cn(
-                      "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
-                      errors.revenueRange ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
+                      "w-full px-4 py-3 bg-[#0A0A0A] text-white border rounded-lg focus:outline-none focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-colors font-mono text-sm",
+                      errors.revenueRange ? "border-[#7A2021] focus:ring-[#7A2021] focus:border-[#7A2021]" : "border-white/10"
                     )}
                     value={formData.revenueRange}
                     onChange={e => {
@@ -558,7 +560,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                     <option value="" disabled>Select range</option>
                     {REVENUE_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                   </select>
-                  {errors.revenueRange && <p className="text-sm text-red-600 mt-1">{errors.revenueRange}</p>}
+                  {errors.revenueRange && <p className="text-xs text-[#7A2021] mt-1 font-mono">{errors.revenueRange}</p>}
                 </div>
               </div>
             </div>
@@ -568,11 +570,11 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Monthly Ad Spend</label>
+                  <label className="block text-xs font-mono uppercase tracking-widest text-[#5B8FB9]">Monthly Ad Spend</label>
                   <select
                     className={cn(
-                      "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
-                      errors.adSpend ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
+                      "w-full px-4 py-3 bg-[#0A0A0A] text-white border rounded-lg focus:outline-none focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-colors font-mono text-sm",
+                      errors.adSpend ? "border-[#7A2021] focus:ring-[#7A2021] focus:border-[#7A2021]" : "border-white/10"
                     )}
                     value={formData.adSpend}
                     onChange={e => {
@@ -583,14 +585,14 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                     <option value="" disabled>Select spend</option>
                     {AD_SPEND_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                   </select>
-                  {errors.adSpend && <p className="text-sm text-red-600 mt-1">{errors.adSpend}</p>}
+                  {errors.adSpend && <p className="text-xs text-[#7A2021] mt-1 font-mono">{errors.adSpend}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Average Sales Cycle</label>
+                  <label className="block text-xs font-mono uppercase tracking-widest text-[#5B8FB9]">Average Sales Cycle</label>
                   <select
                     className={cn(
-                      "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
-                      errors.salesCycle ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
+                      "w-full px-4 py-3 bg-[#0A0A0A] text-white border rounded-lg focus:outline-none focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-colors font-mono text-sm",
+                      errors.salesCycle ? "border-[#7A2021] focus:ring-[#7A2021] focus:border-[#7A2021]" : "border-white/10"
                     )}
                     value={formData.salesCycle}
                     onChange={e => {
@@ -601,12 +603,12 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                     <option value="" disabled>Select cycle</option>
                     {SALES_CYCLE_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                   </select>
-                  {errors.salesCycle && <p className="text-sm text-red-600 mt-1">{errors.salesCycle}</p>}
+                  {errors.salesCycle && <p className="text-xs text-[#7A2021] mt-1 font-mono">{errors.salesCycle}</p>}
                 </div>
               </div>
 
               <div className="space-y-3">
-                <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Primary Ad Channels</label>
+                <label className="block text-xs font-mono uppercase tracking-widest text-[#5B8FB9]">Primary Ad Channels</label>
                 <div className="flex flex-wrap gap-3">
                   {AD_CHANNELS.map(channel => {
                     const isSelected = formData.adChannels.includes(channel);
@@ -619,12 +621,12 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                           if (errors.adChannels) setErrors(prev => ({ ...prev, adChannels: '' }));
                         }}
                         className={cn(
-                          "px-4 py-2 text-sm font-mono uppercase tracking-widest rounded-full border transition-all focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:ring-offset-2 focus:ring-offset-black",
+                          "px-4 py-2 text-xs font-mono uppercase tracking-widest rounded-full border transition-all focus:outline-none focus:ring-1 focus:ring-[#D4AF37]",
                           isSelected 
-                            ? "bg-[#FF9900] border-[#FF9900] text-black font-bold" 
+                            ? "bg-[#D4AF37]/10 border-[#D4AF37]/50 text-[#D4AF37]" 
                             : errors.adChannels
-                              ? "bg-[#222] border-[#CC6666] text-[#CC6666] hover:border-[#FF9900]"
-                              : "bg-[#222] border-[#444] text-zinc-400 hover:border-[#FF9900] hover:text-[#FF9900]"
+                              ? "bg-transparent border-[#7A2021]/50 text-[#7A2021] hover:border-[#D4AF37]/50"
+                              : "bg-transparent border-white/10 text-zinc-400 hover:border-white/30 hover:text-white"
                         )}
                       >
                         {channel}
@@ -632,7 +634,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                     );
                   })}
                 </div>
-                {errors.adChannels && <p className="text-sm text-red-600 mt-1">{errors.adChannels}</p>}
+                {errors.adChannels && <p className="text-xs text-[#7A2021] mt-1 font-mono">{errors.adChannels}</p>}
               </div>
             </div>
           )}
@@ -640,7 +642,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
           {currentStep === 3 && (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="space-y-3">
-                <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Do you export GA4 data to BigQuery?</label>
+                <label className="block text-xs font-mono uppercase tracking-widest text-[#5B8FB9]">Do you export GA4 data to BigQuery?</label>
                 <div className="flex flex-col sm:flex-row gap-3">
                   {YES_NO_SURE.map(opt => (
                     <button
@@ -651,23 +653,23 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                         if (errors.exportBigQuery) setErrors(prev => ({ ...prev, exportBigQuery: '' }));
                       }}
                       className={cn(
-                        "flex-1 py-3 text-sm font-mono uppercase tracking-widest rounded-full border transition-all focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:ring-offset-2 focus:ring-offset-black",
+                        "flex-1 py-3 text-xs font-mono uppercase tracking-widest rounded-lg border transition-all focus:outline-none focus:ring-1 focus:ring-[#D4AF37]",
                         formData.exportBigQuery === opt 
-                          ? "bg-[#FF9900] border-[#FF9900] text-black font-bold" 
+                          ? "bg-[#D4AF37]/10 border-[#D4AF37]/50 text-[#D4AF37]" 
                           : errors.exportBigQuery
-                            ? "bg-[#222] border-[#CC6666] text-[#CC6666] hover:border-[#FF9900]"
-                            : "bg-[#222] border-[#444] text-zinc-400 hover:border-[#FF9900] hover:text-[#FF9900]"
+                            ? "bg-transparent border-[#7A2021]/50 text-[#7A2021] hover:border-[#D4AF37]/50"
+                            : "bg-transparent border-white/10 text-zinc-400 hover:border-white/30 hover:text-white"
                       )}
                     >
                       {opt}
                     </button>
                   ))}
                 </div>
-                {errors.exportBigQuery && <p className="text-sm text-red-600 mt-1">{errors.exportBigQuery}</p>}
+                {errors.exportBigQuery && <p className="text-xs text-[#7A2021] mt-1 font-mono">{errors.exportBigQuery}</p>}
               </div>
 
               <div className="space-y-3">
-                <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Do you use offline conversion imports?</label>
+                <label className="block text-xs font-mono uppercase tracking-widest text-[#5B8FB9]">Do you use offline conversion imports?</label>
                 <div className="flex flex-col sm:flex-row gap-3">
                   {YES_NO_SURE.map(opt => (
                     <button
@@ -678,23 +680,23 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                         if (errors.offlineConversions) setErrors(prev => ({ ...prev, offlineConversions: '' }));
                       }}
                       className={cn(
-                        "flex-1 py-3 text-sm font-mono uppercase tracking-widest rounded-full border transition-all focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:ring-offset-2 focus:ring-offset-black",
+                        "flex-1 py-3 text-xs font-mono uppercase tracking-widest rounded-lg border transition-all focus:outline-none focus:ring-1 focus:ring-[#D4AF37]",
                         formData.offlineConversions === opt 
-                          ? "bg-[#FF9900] border-[#FF9900] text-black font-bold" 
+                          ? "bg-[#D4AF37]/10 border-[#D4AF37]/50 text-[#D4AF37]" 
                           : errors.offlineConversions
-                            ? "bg-[#222] border-[#CC6666] text-[#CC6666] hover:border-[#FF9900]"
-                            : "bg-[#222] border-[#444] text-zinc-400 hover:border-[#FF9900] hover:text-[#FF9900]"
+                            ? "bg-transparent border-[#7A2021]/50 text-[#7A2021] hover:border-[#D4AF37]/50"
+                            : "bg-transparent border-white/10 text-zinc-400 hover:border-white/30 hover:text-white"
                       )}
                     >
                       {opt}
                     </button>
                   ))}
                 </div>
-                {errors.offlineConversions && <p className="text-sm text-red-600 mt-1">{errors.offlineConversions}</p>}
+                {errors.offlineConversions && <p className="text-xs text-[#7A2021] mt-1 font-mono">{errors.offlineConversions}</p>}
               </div>
 
               <div className="space-y-3">
-                <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Is your CRM integrated with revenue reporting?</label>
+                <label className="block text-xs font-mono uppercase tracking-widest text-[#5B8FB9]">Is your CRM integrated with revenue reporting?</label>
                 <div className="flex flex-col sm:flex-row gap-3">
                   {YES_NO_PARTIAL.map(opt => (
                     <button
@@ -705,26 +707,26 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                         if (errors.crmIntegrated) setErrors(prev => ({ ...prev, crmIntegrated: '' }));
                       }}
                       className={cn(
-                        "flex-1 py-3 text-sm font-mono uppercase tracking-widest rounded-full border transition-all focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:ring-offset-2 focus:ring-offset-black",
+                        "flex-1 py-3 text-xs font-mono uppercase tracking-widest rounded-lg border transition-all focus:outline-none focus:ring-1 focus:ring-[#D4AF37]",
                         formData.crmIntegrated === opt 
-                          ? "bg-[#FF9900] border-[#FF9900] text-black font-bold" 
+                          ? "bg-[#D4AF37]/10 border-[#D4AF37]/50 text-[#D4AF37]" 
                           : errors.crmIntegrated
-                            ? "bg-[#222] border-[#CC6666] text-[#CC6666] hover:border-[#FF9900]"
-                            : "bg-[#222] border-[#444] text-zinc-400 hover:border-[#FF9900] hover:text-[#FF9900]"
+                            ? "bg-transparent border-[#7A2021]/50 text-[#7A2021] hover:border-[#D4AF37]/50"
+                            : "bg-transparent border-white/10 text-zinc-400 hover:border-white/30 hover:text-white"
                       )}
                     >
                       {opt}
                     </button>
                   ))}
                 </div>
-                {errors.crmIntegrated && <p className="text-sm text-red-600 mt-1">{errors.crmIntegrated}</p>}
+                {errors.crmIntegrated && <p className="text-xs text-[#7A2021] mt-1 font-mono">{errors.crmIntegrated}</p>}
               </div>
 
               <div className="space-y-2">
-                <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Biggest measurement challenge</label>
+                <label className="block text-xs font-mono uppercase tracking-widest text-[#5B8FB9]">Biggest measurement challenge</label>
                 <textarea
                   rows={3}
-                  className="w-full px-4 py-3 bg-[#222] text-white border border-[#444] rounded-none rounded-l-[2rem] focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors resize-none font-mono"
+                  className="w-full px-4 py-3 bg-[#0A0A0A] text-white border border-white/10 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-colors resize-none font-mono text-sm"
                   value={formData.measurementChallenge}
                   onChange={e => setFormData({...formData, measurementChallenge: e.target.value})}
                 />
@@ -735,11 +737,11 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
           {currentStep === 4 && (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="space-y-2">
-                <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Monthly Budget Willing to Allocate for Revenue Intelligence</label>
+                <label className="block text-xs font-mono uppercase tracking-widest text-[#5B8FB9]">Monthly Budget Willing to Allocate for Revenue Intelligence</label>
                 <select
                   className={cn(
-                    "w-full px-4 py-3 bg-[#222] text-white border rounded-none rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:border-[#FF9900] transition-colors font-mono",
-                    errors.budget ? "border-[#CC6666] focus:ring-[#CC6666] focus:border-[#CC6666]" : "border-[#444]"
+                    "w-full px-4 py-3 bg-[#0A0A0A] text-white border rounded-lg focus:outline-none focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-colors font-mono text-sm",
+                    errors.budget ? "border-[#7A2021] focus:ring-[#7A2021] focus:border-[#7A2021]" : "border-white/10"
                   )}
                   value={formData.budget}
                   onChange={e => {
@@ -750,12 +752,12 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                   <option value="" disabled>Select budget</option>
                   {BUDGET_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                 </select>
-                {errors.budget && <p className="text-sm text-red-600 mt-1">{errors.budget}</p>}
-                <p className="text-xs text-zinc-500 mt-2 font-mono uppercase tracking-widest">Lumetra engagements typically start at 5K per month.</p>
+                {errors.budget && <p className="text-xs text-[#7A2021] mt-1 font-mono">{errors.budget}</p>}
+                <p className="text-[10px] text-zinc-500 mt-2 font-mono uppercase tracking-widest">Lumetra engagements typically start at 5K per month.</p>
               </div>
 
               <div className="space-y-3">
-                <label className="block text-xs font-mono font-bold uppercase tracking-widest text-[#99CCFF]">Timeline to start</label>
+                <label className="block text-xs font-mono uppercase tracking-widest text-[#5B8FB9]">Timeline to start</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {TIMELINE_OPTIONS.map(opt => (
                     <button
@@ -766,29 +768,29 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
                         if (errors.timeline) setErrors(prev => ({ ...prev, timeline: '' }));
                       }}
                       className={cn(
-                        "py-3 px-4 text-sm font-mono uppercase tracking-widest rounded-full border transition-all focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:ring-offset-2 focus:ring-offset-black",
+                        "py-3 px-4 text-xs font-mono uppercase tracking-widest rounded-lg border transition-all focus:outline-none focus:ring-1 focus:ring-[#D4AF37]",
                         formData.timeline === opt 
-                          ? "bg-[#FF9900] border-[#FF9900] text-black font-bold" 
+                          ? "bg-[#D4AF37]/10 border-[#D4AF37]/50 text-[#D4AF37]" 
                           : errors.timeline
-                            ? "bg-[#222] border-[#CC6666] text-[#CC6666] hover:border-[#FF9900]"
-                            : "bg-[#222] border-[#444] text-zinc-400 hover:border-[#FF9900] hover:text-[#FF9900]"
+                            ? "bg-transparent border-[#7A2021]/50 text-[#7A2021] hover:border-[#D4AF37]/50"
+                            : "bg-transparent border-white/10 text-zinc-400 hover:border-white/30 hover:text-white"
                       )}
                     >
                       {opt}
                     </button>
                   ))}
                 </div>
-                {errors.timeline && <p className="text-sm text-red-600 mt-1">{errors.timeline}</p>}
+                {errors.timeline && <p className="text-xs text-[#7A2021] mt-1 font-mono">{errors.timeline}</p>}
               </div>
             </div>
           )}
 
-          <div className="pt-8 border-t border-[#333] flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
+          <div className="pt-8 border-t border-white/10 flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
             {currentStep > 1 ? (
               <button
                 type="button"
                 onClick={prevStep}
-                className="flex items-center justify-center w-full sm:w-auto px-6 py-3 text-sm font-display font-bold uppercase tracking-widest text-[#99CCFF] hover:text-[#FFCC66] transition-colors focus:outline-none rounded-full border border-[#99CCFF] hover:border-[#FFCC66]"
+                className="flex items-center justify-center w-full sm:w-auto px-6 py-3 text-xs font-mono uppercase tracking-widest text-[#5B8FB9] hover:text-white transition-colors focus:outline-none rounded-full border border-[#5B8FB9]/30 hover:border-white/30 bg-transparent"
               >
                 <ChevronLeft className="w-4 h-4 mr-2" />
                 Previous
@@ -801,7 +803,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
               <button
                 type="button"
                 onClick={nextStep}
-                className="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-[#FF9900] text-black font-display font-bold uppercase tracking-widest rounded-full hover:bg-[#FFCC66] transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:ring-offset-2 focus:ring-offset-black"
+                className="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-[#D4AF37] text-black font-mono text-xs uppercase tracking-widest rounded-full hover:bg-[#C5A059] transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-2 focus:ring-offset-[#050505]"
               >
                 Continue
                 <ChevronRight className="w-4 h-4 ml-2" />
@@ -810,7 +812,7 @@ export function EvaluationForm({ className, locationContext = 'General' }: Evalu
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-[#CC6666] text-black font-display font-bold uppercase tracking-widest rounded-full hover:bg-[#FF9900] transition-colors focus:outline-none focus:ring-2 focus:ring-[#CC6666] focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-[#7A2021] text-white font-mono text-xs uppercase tracking-widest rounded-full hover:bg-[#9A2A2B] transition-colors focus:outline-none focus:ring-2 focus:ring-[#7A2021] focus:ring-offset-2 focus:ring-offset-[#050505] disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>

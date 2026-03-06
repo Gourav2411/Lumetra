@@ -208,39 +208,46 @@ export function CaseStudies() {
   };
 
   return (
-    <div className="bg-black min-h-screen">
+    <div className="bg-[#050505] min-h-screen relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 pointer-events-none"></div>
       <SEO 
         title="GA4 & BigQuery Case Studies | Digital Strategy Success"
         description="Read our case studies to see how our GA4 consulting and BigQuery services have helped companies fix tracking, build custom attribution, and unlock digital growth."
         keywords="GA4 case studies, BigQuery success stories, digital strategy examples, GA4 consulting results"
         canonicalUrl="https://www.lumetraanalytics.com/case-studies"
       />
-      <div className="bg-[#0a0a0a] border-b-8 border-[#FF9900] text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl lg:text-5xl font-display font-bold uppercase tracking-widest text-[#FF9900] mb-6">
+      <div className="bg-[#0A0A0A] border-b border-white/10 text-white py-20 relative z-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#5B8FB9]/5 to-transparent"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="h-[1px] w-12 bg-[#5B8FB9]"></div>
+            <span className="font-mono text-[#5B8FB9] tracking-widest uppercase text-xs">Mission Logs</span>
+            <div className="h-[1px] w-12 bg-[#5B8FB9]"></div>
+          </div>
+          <h1 className="text-4xl lg:text-5xl font-display font-light tracking-tight text-white mb-6">
             GA4 & BigQuery Case Studies
           </h1>
-          <p className="text-xl text-zinc-400 max-w-2xl mx-auto font-mono">
+          <p className="text-xl text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed">
             See how our expert GA4 consulting and digital strategy services have helped companies fix their tracking, build custom attribution models, and unlock growth.
           </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 relative z-10">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
           
           {/* Mobile Navigation (Horizontal Scroll) */}
-          <div className="lg:hidden sticky top-16 z-40 bg-black/90 backdrop-blur-md py-4 -mx-4 px-4 border-b-2 border-[#333] overflow-x-auto hide-scrollbar">
+          <div className="lg:hidden sticky top-16 z-40 bg-[#050505]/90 backdrop-blur-md py-4 -mx-4 px-4 border-b border-white/10 overflow-x-auto hide-scrollbar">
             <div className="flex gap-2">
               {CASE_STUDIES.map(study => (
                 <button
                   key={study.id}
                   onClick={() => scrollTo(study.id)}
                   className={cn(
-                    "whitespace-nowrap px-4 py-2 text-sm font-mono uppercase tracking-widest rounded-full transition-colors border",
+                    "whitespace-nowrap px-4 py-2 text-xs font-mono uppercase tracking-widest rounded-full transition-colors border",
                     activeId === study.id
-                      ? "bg-[#FF9900] text-black border-[#FF9900] font-bold"
-                      : "bg-[#111] text-zinc-400 border-[#333] hover:border-[#FF9900] hover:text-[#FF9900]"
+                      ? "bg-[#5B8FB9] text-black border-[#5B8FB9] font-bold"
+                      : "bg-transparent text-zinc-400 border-white/10 hover:border-[#5B8FB9]/50 hover:text-white"
                   )}
                 >
                   {study.navTitle}
@@ -252,19 +259,21 @@ export function CaseStudies() {
           {/* Desktop Sidebar Navigation */}
           <div className="hidden lg:block w-64 flex-shrink-0">
             <div className="sticky top-32">
-              <h3 className="text-xs font-mono font-bold text-[#CC6666] uppercase tracking-widest mb-4 px-4">
+              <h3 className="text-[10px] font-mono font-bold text-[#D4AF37] uppercase tracking-widest mb-4 px-4 flex items-center gap-2">
+                <span className="w-1 h-1 rounded-full bg-[#D4AF37]"></span>
                 Jump to Case Study
               </h3>
-              <nav className="flex flex-col border-l-2 border-[#333]">
+              <nav className="flex flex-col border-l border-white/10 relative">
+                <div className="absolute left-[-1px] top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#5B8FB9] via-transparent to-transparent opacity-50"></div>
                 {CASE_STUDIES.map(study => (
                   <button
                     key={study.id}
                     onClick={() => scrollTo(study.id)}
                     className={cn(
-                      "text-left px-4 py-3 text-sm font-mono uppercase tracking-widest transition-colors border-l-4 -ml-[3px]",
+                      "text-left px-4 py-3 text-xs font-mono uppercase tracking-widest transition-colors border-l-2 -ml-[1px]",
                       activeId === study.id
-                        ? "border-[#FF9900] text-[#FF9900] bg-[#FF9900]/10 font-bold"
-                        : "border-transparent text-zinc-500 hover:text-[#99CCFF] hover:border-[#99CCFF]"
+                        ? "border-[#5B8FB9] text-[#5B8FB9] bg-[#5B8FB9]/5 font-bold"
+                        : "border-transparent text-zinc-500 hover:text-white hover:border-white/30"
                     )}
                   >
                     {study.navTitle}
@@ -272,12 +281,14 @@ export function CaseStudies() {
                 ))}
               </nav>
               
-              <div className="mt-12 p-6 bg-[#111] rounded-[2rem] rounded-tl-none border-2 border-[#333]">
-                <h4 className="font-display font-bold uppercase tracking-widest text-[#99CCFF] mb-2">Need similar results?</h4>
-                <p className="text-sm text-zinc-400 mb-4 font-mono">Let's audit your setup and find your revenue leaks.</p>
+              <div className="mt-12 p-6 bg-[#0A0A0A] rounded-3xl border border-white/10 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-16 h-[1px] bg-[#D4AF37]"></div>
+                <div className="absolute bottom-0 left-0 w-[1px] h-16 bg-[#5B8FB9]"></div>
+                <h4 className="font-display font-medium text-white mb-2">Need similar results?</h4>
+                <p className="text-sm text-zinc-400 mb-6 font-light">Let's audit your setup and find your revenue leaks.</p>
                 <Link 
                   to="/diagnostic"
-                  className="block w-full text-center px-4 py-3 bg-[#CC99CC] text-black text-sm font-display font-bold uppercase tracking-widest rounded-full hover:bg-[#FF9900] transition-colors"
+                  className="block w-full text-center px-4 py-3 bg-transparent border border-[#D4AF37]/30 text-[#D4AF37] text-xs font-mono uppercase tracking-widest rounded-full hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50 hover:text-white transition-colors"
                 >
                   Get Diagnostic
                 </Link>
@@ -298,44 +309,47 @@ export function CaseStudies() {
                     
                     {/* Text Content */}
                     <div className={cn("order-2", isEven ? "xl:order-1" : "xl:order-2")}>
-                      <div className="flex items-center gap-3 mb-6">
-                        <div className={cn("w-12 h-12 rounded-full flex items-center justify-center bg-[#222]")}>
-                          <Icon className={cn("w-6 h-6 text-[#FF9900]")} />
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="w-10 h-10 rounded-full border border-[#5B8FB9]/30 bg-[#5B8FB9]/5 flex items-center justify-center">
+                          <Icon className="w-4 h-4 text-[#5B8FB9]" />
                         </div>
-                        <span className={cn("font-mono font-bold tracking-widest uppercase text-sm text-[#FF9900]")}>
+                        <span className="font-mono text-xs tracking-widest uppercase text-[#5B8FB9]">
                           {study.industry}
                         </span>
                       </div>
-                      <h2 className="text-3xl lg:text-4xl font-display font-bold uppercase tracking-widest text-[#99CCFF] mb-6">
+                      <h2 className="text-3xl lg:text-4xl font-display font-light tracking-tight text-white mb-8">
                         {study.title}
                       </h2>
                       
-                      <div className="space-y-6 text-zinc-400 mb-8 font-mono">
+                      <div className="space-y-8 text-zinc-300 mb-10 font-light leading-relaxed">
                         <div>
-                          <h3 className="text-lg font-display font-bold uppercase tracking-widest text-white mb-2">The Challenge</h3>
-                          <p>{study.challenge}</p>
+                          <h3 className="text-sm font-mono uppercase tracking-widest text-[#D4AF37] mb-3">The Challenge</h3>
+                          <p className="text-sm">{study.challenge}</p>
                         </div>
                         
                         <div>
-                          <h3 className="text-lg font-display font-bold uppercase tracking-widest text-white mb-2">Technical Implementation</h3>
-                          <ul className="list-disc pl-5 space-y-2">
+                          <h3 className="text-sm font-mono uppercase tracking-widest text-[#D4AF37] mb-3">Technical Implementation</h3>
+                          <ul className="space-y-3">
                             {study.implementation.map((item, i) => (
-                              <li key={i}>{item}</li>
+                              <li key={i} className="flex items-start text-sm">
+                                <span className="text-[#5B8FB9] mr-3 mt-1">▹</span>
+                                {item}
+                              </li>
                             ))}
                           </ul>
                         </div>
 
                         <div>
-                          <h3 className="text-lg font-display font-bold uppercase tracking-widest text-white mb-2">The Result</h3>
-                          <p>{study.result}</p>
+                          <h3 className="text-sm font-mono uppercase tracking-widest text-[#D4AF37] mb-3">The Result</h3>
+                          <p className="text-sm">{study.result}</p>
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-6 border-t-2 border-[#333] pt-8">
+                      <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
                         {study.stats.map((stat, i) => (
                           <div key={i}>
-                            <p className="text-4xl font-display font-bold text-[#CC6666] mb-1">{stat.value}</p>
-                            <p className="text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest">{stat.label}</p>
+                            <p className="text-4xl font-display font-light text-white mb-2">{stat.value}</p>
+                            <p className="text-[10px] font-mono text-[#5B8FB9] uppercase tracking-widest">{stat.label}</p>
                           </div>
                         ))}
                       </div>
@@ -343,12 +357,15 @@ export function CaseStudies() {
 
                     {/* Quote Block */}
                     <div className={cn(
-                      "order-1 rounded-[3rem] rounded-tr-none p-8 lg:p-12 border-2 border-[#FF9900] sticky top-32 relative overflow-hidden bg-[#111]",
+                      "order-1 rounded-3xl p-8 lg:p-12 border border-white/10 sticky top-32 relative overflow-hidden bg-[#0A0A0A] backdrop-blur-sm",
                       isEven ? "xl:order-2" : "xl:order-1"
                     )}>
+                      <div className="absolute top-0 right-0 w-32 h-[1px] bg-[#D4AF37]"></div>
+                      <div className="absolute bottom-0 left-0 w-[1px] h-32 bg-[#5B8FB9]"></div>
+                      
                       {/* Background Image */}
                       <div 
-                        className="absolute inset-0 z-0 opacity-20 mix-blend-overlay pointer-events-none"
+                        className="absolute inset-0 z-0 opacity-10 mix-blend-overlay pointer-events-none grayscale"
                         style={{ 
                           backgroundImage: `url(${study.image})`,
                           backgroundSize: 'cover',
@@ -356,16 +373,16 @@ export function CaseStudies() {
                         }}
                       />
 
-                      <blockquote className="relative z-10 text-xl lg:text-2xl font-mono text-[#FFCC66] italic mb-8 leading-relaxed">
+                      <blockquote className="relative z-10 text-xl lg:text-2xl font-display font-light text-white italic mb-10 leading-relaxed">
                         "{study.quote}"
                       </blockquote>
-                      <div className="relative z-10 flex items-center gap-4">
-                        <div className="w-14 h-14 bg-[#FF9900] rounded-full flex items-center justify-center text-black font-display font-bold text-xl shadow-sm">
+                      <div className="relative z-10 flex items-center gap-6">
+                        <div className="w-12 h-12 border border-[#D4AF37]/30 bg-[#D4AF37]/5 rounded-full flex items-center justify-center text-[#D4AF37] font-display font-light text-xl">
                           {study.author.charAt(0)}
                         </div>
                         <div>
-                          <p className="font-display font-bold uppercase tracking-widest text-white text-lg">{study.author}</p>
-                          <p className="text-zinc-500 font-mono text-sm uppercase tracking-widest">{study.role}</p>
+                          <p className="font-display font-medium text-white mb-1">{study.author}</p>
+                          <p className="text-zinc-500 font-mono text-[10px] uppercase tracking-widest">{study.role}</p>
                         </div>
                       </div>
                     </div>
@@ -380,12 +397,12 @@ export function CaseStudies() {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-[#0a0a0a] py-24 border-t-8 border-[#CC99CC]">
+      <div className="bg-[#0A0A0A] py-24 border-t border-white/10 relative z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-display font-bold uppercase tracking-widest text-[#99CCFF] mb-6">
+          <h2 className="text-3xl lg:text-4xl font-display font-light tracking-tight text-white mb-6">
             Ready to be our next success story?
           </h2>
-          <p className="text-lg text-zinc-400 mb-12 max-w-2xl mx-auto font-mono">
+          <p className="text-lg text-zinc-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
             Get a custom action plan to fix your tracking, build accurate attribution models, and scale with confidence.
           </p>
           <div className="max-w-2xl mx-auto text-left">
