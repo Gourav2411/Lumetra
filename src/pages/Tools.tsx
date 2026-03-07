@@ -4,6 +4,14 @@ import { SEO } from '../components/SEO';
 import { Wrench, Cpu, Database } from 'lucide-react';
 
 export function Tools() {
+  const schemaMarkup = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Analytics Tools | Lumetra",
+    "description": "Advanced tools for GA4 implementation and digital strategy.",
+    "url": "https://www.lumetraanalytics.com/tools"
+  });
+
   return (
     <div className="bg-[#050505] min-h-screen py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 pointer-events-none"></div>
@@ -11,6 +19,8 @@ export function Tools() {
         title="Analytics Tools | Lumetra"
         description="Advanced tools for GA4 implementation and digital strategy."
         canonicalUrl="https://www.lumetraanalytics.com/tools"
+        schemaMarkup={schemaMarkup}
+        keywords="analytics tools, GA4 implementation tools, digital strategy AI, BigQuery query builder, data validator"
       />
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-16">

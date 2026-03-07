@@ -2,6 +2,14 @@ import React from 'react';
 import { SEO } from '../components/SEO';
 
 export function PrivacyPolicy() {
+  const schemaMarkup = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Privacy Policy | Lumetra Analytics",
+    "description": "Learn how Lumetra collects, uses, and protects your personal data.",
+    "url": "https://www.lumetraanalytics.com/privacy-policy"
+  });
+
   return (
     <div className="bg-[#050505] min-h-screen py-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 pointer-events-none"></div>
@@ -9,6 +17,8 @@ export function PrivacyPolicy() {
         title="Privacy Policy"
         description="Learn how Lumetra collects, uses, and protects your personal data."
         canonicalUrl="https://www.lumetraanalytics.com/privacy-policy"
+        schemaMarkup={schemaMarkup}
+        keywords="privacy policy, data protection, GDPR, CCPA, Lumetra Analytics privacy"
       />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center gap-4 mb-6">

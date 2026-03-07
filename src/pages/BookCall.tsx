@@ -4,6 +4,14 @@ import { Calendar, Clock, Video } from 'lucide-react';
 import { SEO } from '../components/SEO';
 
 export function BookCall() {
+  const schemaMarkup = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Book a Consultation | GA4 & Digital Strategy Experts",
+    "description": "Schedule a free consultation with our GA4 and BigQuery experts.",
+    "url": "https://www.lumetraanalytics.com/book-call"
+  });
+
   return (
     <div className="bg-[#050505] min-h-screen py-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 pointer-events-none"></div>
@@ -12,6 +20,7 @@ export function BookCall() {
         description="Schedule a free consultation with our GA4 and BigQuery experts. Discuss your digital strategy, tracking challenges, and how our consulting services can help."
         keywords="book GA4 consultation, hire GA4 expert, digital strategy consultation"
         canonicalUrl="https://www.lumetraanalytics.com/book-call"
+        schemaMarkup={schemaMarkup}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">

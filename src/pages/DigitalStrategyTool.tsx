@@ -148,10 +148,9 @@ Query: ${query}
         title="Digital Strategy AI Tool | Lumetra"
         description="Generate expert GA4 implementation plans and analyze your data using top AI models."
         canonicalUrl="https://www.lumetraanalytics.com/tools/digital-strategy"
+        schemaMarkup={JSON.stringify(schema)}
+        keywords="digital strategy AI, GA4 implementation plan, AI analytics tool, BigQuery AI, Lumetra tools"
       />
-      <script type="application/ld+json">
-        {JSON.stringify(schema)}
-      </script>
       
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mb-8">

@@ -7,12 +7,11 @@ export function Layout() {
   
   const navLinks = [
     { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services' },
     { name: 'Case Studies', path: '/case-studies' },
-    { name: 'Diagnostic', path: '/diagnostic' },
     { name: 'Tools', path: '/tools' },
     { name: 'Blog', path: '/blog' },
-    { name: 'Book a Call', path: '/book-call' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'About', path: '/about' },
   ];
 
   return (
@@ -76,16 +75,17 @@ export function Layout() {
             <div>
               <h4 className="font-mono text-xs font-medium text-white uppercase tracking-widest mb-6">Services</h4>
               <ul className="space-y-4 text-sm text-zinc-400 font-light">
-                <li><Link to="/diagnostic" className="hover:text-[#D4AF37] transition-colors">GA4 Audit & Diagnostic</Link></li>
-                <li><Link to="/case-studies" className="hover:text-[#D4AF37] transition-colors">GA4 Case Studies</Link></li>
+                <li><Link to="/services" className="hover:text-[#D4AF37] transition-colors">All Services</Link></li>
+                <li><Link to="/diagnostic" className="hover:text-[#D4AF37] transition-colors">Revenue Audit</Link></li>
+                <li><Link to="/case-studies" className="hover:text-[#D4AF37] transition-colors">Case Studies</Link></li>
                 <li><Link to="/tools" className="hover:text-[#D4AF37] transition-colors">Analytics Tools</Link></li>
-                <li><Link to="/" className="hover:text-[#D4AF37] transition-colors">Digital Strategy</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-mono text-xs font-medium text-white uppercase tracking-widest mb-6">Company</h4>
               <ul className="space-y-4 text-sm text-zinc-400 font-light">
-                <li><Link to="/contact" className="hover:text-[#D4AF37] transition-colors">Contact Us</Link></li>
+                <li><Link to="/about" className="hover:text-[#D4AF37] transition-colors">About Us</Link></li>
+                <li><Link to="/contact" className="hover:text-[#D4AF37] transition-colors">Contact</Link></li>
                 <li><Link to="/book-call" className="hover:text-[#D4AF37] transition-colors">Book a Call</Link></li>
                 <li><Link to="/privacy-policy" className="hover:text-[#D4AF37] transition-colors">Privacy Policy</Link></li>
               </ul>

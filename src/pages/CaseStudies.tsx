@@ -176,6 +176,14 @@ const THEME_CLASSES: Record<string, { text: string, bg: string, border: string, 
 export function CaseStudies() {
   const [activeId, setActiveId] = useState(CASE_STUDIES[0].id);
 
+  const schemaMarkup = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "GA4 & BigQuery Case Studies | Digital Strategy Success",
+    "description": "Read our case studies to see how our GA4 consulting and BigQuery services have helped companies fix tracking, build custom attribution, and unlock digital growth.",
+    "url": "https://www.lumetraanalytics.com/case-studies"
+  });
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -215,6 +223,7 @@ export function CaseStudies() {
         description="Read our case studies to see how our GA4 consulting and BigQuery services have helped companies fix tracking, build custom attribution, and unlock digital growth."
         keywords="GA4 case studies, BigQuery success stories, digital strategy examples, GA4 consulting results"
         canonicalUrl="https://www.lumetraanalytics.com/case-studies"
+        schemaMarkup={schemaMarkup}
       />
       <div className="bg-[#0A0A0A] border-b border-white/10 text-white py-20 relative z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-[#5B8FB9]/5 to-transparent"></div>

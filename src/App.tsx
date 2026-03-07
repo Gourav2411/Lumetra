@@ -17,6 +17,8 @@ import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
 import { Tools } from './pages/Tools';
 import { DigitalStrategyTool } from './pages/DigitalStrategyTool';
+import { Services } from './pages/Services';
+import { About } from './pages/About';
 
 export default function App() {
   return (
@@ -26,6 +28,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
+            <Route path="services" element={<Services />} />
+            <Route path="about" element={<About />} />
             <Route path="case-studies" element={<CaseStudies />} />
             <Route path="diagnostic" element={<Diagnostic />} />
             <Route path="book-call" element={<BookCall />} />
