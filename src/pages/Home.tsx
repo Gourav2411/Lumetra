@@ -31,8 +31,8 @@ export function Home() {
   return (
     <div className="flex flex-col">
       <SEO 
-        title="Turn Raw Data Into Revenue Certainty | Lumetra Analytics"
-        description="We build and manage enterprise-grade measurement systems for brands spending $10K+ per month on ads. Stop guessing which campaigns drive profit."
+        title="Lumetra - Premium GA4 & BigQuery Consulting for High-Growth Brands"
+        description="Transform raw data into scalable revenue. We engineer custom analytics, attribution systems, and Fractional CMO services for high-growth brands spending $10K+/month on ads."
         keywords="GA4 consulting, Digital Strategy, BigQuery Consulting, Best GA4 services, Google Analytics 4 expert, data analytics consulting, revenue intelligence"
         canonicalUrl="https://www.lumetraanalytics.com/"
         schemaMarkup={schemaMarkup}
@@ -50,10 +50,10 @@ export function Home() {
                 <span className="font-mono text-[#D4AF37] tracking-widest uppercase text-xs">System Online</span>
               </div>
               <h1 className="text-5xl lg:text-7xl font-display font-light tracking-tight text-white leading-[1.1] mb-6">
-                Stop Guessing. Know Exactly Which Ads Drive Revenue.
+                Scale to Millions in Months with Elite Analytics & Executive Leadership.
               </h1>
               <p className="text-lg text-zinc-400 mb-8 max-w-lg font-light leading-relaxed">
-                We engineer custom analytics and attribution systems for brands spending $10K+ per month on ads. Eliminate wasted spend and scale your marketing with absolute data certainty.
+                We combine enterprise-grade data engineering with Fractional CMO strategy. For brands spending $10K+/month on ads, we eliminate wasted spend by fixing your tracking, then deploy executive leadership to turn that absolute data certainty into aggressive, multi-million dollar growth.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/diagnostic" className="inline-flex items-center justify-center px-8 py-3 bg-[#D4AF37] text-black font-mono text-sm uppercase tracking-widest rounded-full hover:bg-[#C5A059] transition-colors">
@@ -135,10 +135,10 @@ export function Home() {
                 <span className="font-mono text-[#7A2021] tracking-widest uppercase text-xs">Alert Status</span>
               </div>
               <h2 className="text-3xl lg:text-4xl font-display font-light tracking-tight text-white mb-6">
-                Is your tracking costing you money?
+                Is your growth stalling due to broken data and lack of leadership?
               </h2>
               <p className="text-lg text-zinc-400 mb-8 font-light leading-relaxed">
-                Most companies lose 20–30% of their ad spend to broken tracking, thresholding, and poor attribution. When you scale past $10,000 a month in ad spend, "good enough" analytics becomes a liability. You cannot optimize what you cannot accurately measure.
+                Most companies lose 20–30% of their ad spend to broken tracking, while missing out on millions due to disjointed marketing strategies. When you scale past $10,000 a month in ad spend, you need more than just dashboards—you need absolute data certainty paired with executive Fractional CMO leadership to aggressively capture market share.
               </p>
               <div className="mt-8">
                 <Link to="/diagnostic" className="inline-flex items-center justify-center px-8 py-3 bg-transparent text-[#7A2021] border border-[#7A2021]/50 font-mono text-sm uppercase tracking-widest rounded-full hover:bg-[#7A2021]/10 transition-colors">
@@ -164,14 +164,14 @@ export function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-display font-light tracking-tight text-white mb-4">
-              Measurement is an ongoing operational advantage.
+              The Infrastructure & Leadership to Scale to Millions.
             </h2>
             <p className="text-lg text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed">
-              We don't just fix your tracking; we engineer a single source of truth for your executive team.
+              We don't just fix your tracking; we engineer a single source of truth and provide the executive strategy to dominate your market.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-[#0A0A0A] rounded-2xl p-8 border border-white/5 hover:border-[#D4AF37]/30 transition-colors group flex flex-col">
               <h3 className="text-xl font-display font-medium text-white mb-4">Revenue Audit</h3>
               <p className="text-zinc-400 mb-8 font-light text-sm leading-relaxed flex-grow">
@@ -202,6 +202,17 @@ export function Home() {
               </p>
               <Link to="/services" className="inline-flex items-center text-xs font-mono uppercase tracking-widest text-[#D4AF37] group-hover:text-white transition-colors">
                 View Retainer Details <ArrowRight className="w-4 h-4 ml-2" />
+              </Link>
+            </div>
+
+            <div className="bg-[#0A0A0A] rounded-2xl p-8 border border-white/5 hover:border-[#8B5CF6]/30 transition-colors group flex flex-col">
+              <div className="text-[#8B5CF6] font-mono text-[10px] uppercase tracking-widest mb-4">Executive Advisory</div>
+              <h3 className="text-xl font-display font-medium text-white mb-4">Fractional CMO</h3>
+              <p className="text-zinc-400 mb-8 font-light text-sm leading-relaxed flex-grow">
+                Executive-level marketing leadership to align your data infrastructure with high-level growth strategies and team execution.
+              </p>
+              <Link to="/services" className="inline-flex items-center text-xs font-mono uppercase tracking-widest text-[#8B5CF6] group-hover:text-white transition-colors">
+                Explore Advisory <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </div>
           </div>
@@ -288,10 +299,10 @@ export function Home() {
             <div className="h-[1px] w-12 bg-[#5B8FB9]"></div>
           </div>
           <h2 className="text-3xl lg:text-4xl font-display font-light tracking-tight text-white mb-6">
-            Ready to scale with absolute confidence?
+            Ready to add millions to your bottom line?
           </h2>
           <p className="text-lg text-zinc-400 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-            Stop making six-figure decisions based on broken data. Let's build an analytics foundation that actually drives growth.
+            Stop making six-figure decisions based on broken data and disjointed strategy. Let's build an analytics foundation and deploy the executive leadership that actually drives exponential growth.
           </p>
           <div className="flex justify-center">
             <Link to="/diagnostic" className="inline-flex items-center justify-center px-8 py-4 bg-[#D4AF37] text-black font-mono text-sm uppercase tracking-widest rounded-full hover:bg-[#C5A059] transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-2 focus:ring-offset-[#050505]">

@@ -57,8 +57,8 @@ export function BlogPost() {
       "@type": "WebPage",
       "@id": `https://www.lumetraanalytics.com/blog/${post.slug}`
     },
-    "datePublished": "2024-01-01T08:00:00Z",
-    "dateModified": new Date().toISOString(),
+    "datePublished": `${post.date}T08:00:00Z`,
+    "dateModified": `${post.date}T08:00:00Z`,
     "keywords": post.keyword
   });
 
@@ -95,7 +95,7 @@ export function BlogPost() {
             <span className="w-1 h-1 rounded-full bg-white/20"></span>
             <span>5 min read</span>
             <span className="w-1 h-1 rounded-full bg-white/20"></span>
-            <span>{new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+            <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
           </div>
           
           <h1 className="text-4xl font-display font-light text-white tracking-tight sm:text-5xl lg:text-7xl mb-6 leading-[1.1]">

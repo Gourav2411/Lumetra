@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Search, Database, Zap, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Search, Database, Zap, CheckCircle2, Briefcase } from 'lucide-react';
 import { SEO } from '../components/SEO';
 
 export function Services() {
@@ -10,7 +10,8 @@ export function Services() {
     "serviceType": "Analytics Consulting",
     "provider": {
       "@type": "Organization",
-      "name": "Lumetra Analytics"
+      "name": "Lumetra Analytics",
+      "url": "https://www.lumetraanalytics.com"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -20,40 +21,55 @@ export function Services() {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Revenue Audit"
+            "name": "Revenue Audit",
+            "description": "A surgical diagnostic of your current data infrastructure. We identify exactly where your tracking is failing, why your attribution is skewed, and how much ad spend is being wasted due to poor measurement."
           },
           "priceSpecification": {
             "@type": "PriceSpecification",
             "minPrice": "1500",
             "maxPrice": "2500",
             "priceCurrency": "USD"
-          }
+          },
+          "url": "https://www.lumetraanalytics.com/services"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Measurement Build"
+            "name": "Measurement Build",
+            "description": "We tear down your broken setup and engineer a pristine, custom data pipeline. This is a complete overhaul of your analytics architecture, designed to give you a single, unshakeable source of truth."
           },
           "priceSpecification": {
             "@type": "PriceSpecification",
             "minPrice": "4000",
             "maxPrice": "8000",
             "priceCurrency": "USD"
-          }
+          },
+          "url": "https://www.lumetraanalytics.com/services"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Analytics Retainer"
+            "name": "Analytics Retainer",
+            "description": "Our Analytics Retainer provides you with a dedicated, senior-level data engineering team to actively manage your measurement architecture. We continuously refine your SQL attribution models and uncover new revenue opportunities."
           },
           "priceSpecification": {
             "@type": "PriceSpecification",
             "minPrice": "5000",
             "maxPrice": "6500",
             "priceCurrency": "USD"
-          }
+          },
+          "url": "https://www.lumetraanalytics.com/services"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Fractional CMO",
+            "description": "Executive-level marketing strategy and leadership. We embed within your leadership team to guide budget allocation, team structuring, and high-level growth initiatives based on absolute data certainty."
+          },
+          "url": "https://www.lumetraanalytics.com/services"
         }
       ]
     }
@@ -119,6 +135,14 @@ export function Services() {
                 ))}
               </ul>
             </div>
+            <div className="mb-10 p-6 bg-[#5B8FB9]/5 border border-[#5B8FB9]/20 rounded-2xl">
+              <h3 className="text-sm font-mono uppercase tracking-widest text-[#5B8FB9] mb-3">Key GA4 Conversion Events Tracked</h3>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-[#0A0A0A] border border-white/10 rounded font-mono text-xs text-zinc-400">lead_generated</span>
+                <span className="px-3 py-1 bg-[#0A0A0A] border border-white/10 rounded font-mono text-xs text-zinc-400">form_submission</span>
+                <span className="px-3 py-1 bg-[#0A0A0A] border border-white/10 rounded font-mono text-xs text-zinc-400">audit_requested</span>
+              </div>
+            </div>
             <Link to="/book-call" className="inline-flex items-center justify-center px-8 py-3 bg-transparent text-[#5B8FB9] border border-[#5B8FB9]/50 font-mono text-sm uppercase tracking-widest rounded-full hover:bg-[#5B8FB9]/10 transition-colors">
               Book an Audit
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -174,6 +198,15 @@ export function Services() {
                   </li>
                 ))}
               </ul>
+            </div>
+            <div className="mb-10 p-6 bg-[#D4AF37]/5 border border-[#D4AF37]/20 rounded-2xl">
+              <h3 className="text-sm font-mono uppercase tracking-widest text-[#D4AF37] mb-3">Key GA4 Conversion Events Tracked</h3>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-[#0A0A0A] border border-white/10 rounded font-mono text-xs text-zinc-400">trial_signup</span>
+                <span className="px-3 py-1 bg-[#0A0A0A] border border-white/10 rounded font-mono text-xs text-zinc-400">purchase</span>
+                <span className="px-3 py-1 bg-[#0A0A0A] border border-white/10 rounded font-mono text-xs text-zinc-400">demo_booked</span>
+                <span className="px-3 py-1 bg-[#0A0A0A] border border-white/10 rounded font-mono text-xs text-zinc-400">pipeline_created</span>
+              </div>
             </div>
             <Link to="/book-call" className="inline-flex items-center justify-center px-8 py-3 bg-transparent text-[#D4AF37] border border-[#D4AF37]/50 font-mono text-sm uppercase tracking-widest rounded-full hover:bg-[#D4AF37]/10 transition-colors">
               Start Your Build
@@ -240,6 +273,14 @@ export function Services() {
                 </li>
               </ul>
             </div>
+            <div className="mb-10 p-6 bg-[#7A2021]/5 border border-[#7A2021]/20 rounded-2xl">
+              <h3 className="text-sm font-mono uppercase tracking-widest text-[#7A2021] mb-3">Key GA4 Conversion Events Tracked</h3>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-[#0A0A0A] border border-white/10 rounded font-mono text-xs text-zinc-400">roi_positive_6mo</span>
+                <span className="px-3 py-1 bg-[#0A0A0A] border border-white/10 rounded font-mono text-xs text-zinc-400">ltv_milestone_reached</span>
+                <span className="px-3 py-1 bg-[#0A0A0A] border border-white/10 rounded font-mono text-xs text-zinc-400">churn_risk_identified</span>
+              </div>
+            </div>
             <Link to="/book-call" className="inline-flex items-center justify-center px-8 py-4 bg-[#7A2021] text-white font-mono text-sm uppercase tracking-widest rounded-full hover:bg-[#5a1618] transition-colors">
               Apply for a Retainer
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -254,6 +295,60 @@ export function Services() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-80"></div>
               <Zap className="w-32 h-32 text-[#7A2021]/40 relative z-10" />
             </div>
+          </div>
+        </div>
+
+        {/* Tier 4: Fractional CMO */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#8B5CF6]/20 to-transparent rounded-3xl blur-2xl"></div>
+            <div className="relative bg-[#0A0A0A] border border-white/10 rounded-3xl p-8 aspect-square flex items-center justify-center overflow-hidden group">
+              <div className="absolute top-0 left-0 w-32 h-[1px] bg-[#8B5CF6]"></div>
+              <div className="absolute bottom-0 right-0 w-[1px] h-32 bg-[#8B5CF6]"></div>
+              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-40 mix-blend-luminosity group-hover:opacity-60 transition-opacity duration-700"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-80"></div>
+              <Briefcase className="w-32 h-32 text-[#8B5CF6]/40 relative z-10" />
+            </div>
+          </div>
+          <div>
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 rounded-full border border-[#8B5CF6]/30 bg-[#8B5CF6]/5 flex items-center justify-center">
+                <Briefcase className="w-5 h-5 text-[#8B5CF6]" />
+              </div>
+              <div>
+                <span className="font-mono text-xs tracking-widest uppercase text-[#8B5CF6] block">Executive Advisory</span>
+                <span className="font-mono text-[10px] tracking-widest uppercase text-zinc-500">Custom Pricing (Retainer)</span>
+              </div>
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-display font-light tracking-tight text-white mb-6">
+              Fractional CMO
+            </h2>
+            <p className="text-lg text-zinc-400 mb-8 font-light leading-relaxed">
+              For brands that need more than just data engineering. Our Fractional CMO service bridges the gap between raw analytics and executive-level marketing strategy. We embed within your leadership team to guide budget allocation, team structuring, and high-level growth initiatives based on absolute data certainty.
+            </p>
+            <div className="mb-10">
+              <h3 className="text-sm font-mono uppercase tracking-widest text-white mb-4">Scope of Work</h3>
+              <ul className="space-y-4">
+                {['Executive-level marketing strategy and budget allocation', 'Marketing team structuring and hiring guidance', 'Cross-channel performance optimization', 'Board-level reporting and strategic forecasting', 'Direct alignment of data infrastructure with business goals'].map((item, i) => (
+                  <li key={i} className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 text-[#8B5CF6] mr-3 flex-shrink-0 mt-0.5" />
+                    <span className="text-zinc-300 font-light">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mb-10 p-6 bg-[#8B5CF6]/5 border border-[#8B5CF6]/20 rounded-2xl">
+              <h3 className="text-sm font-mono uppercase tracking-widest text-[#8B5CF6] mb-3">Key GA4 Conversion Events Tracked</h3>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-[#0A0A0A] border border-white/10 rounded font-mono text-xs text-zinc-400">market_share_expansion</span>
+                <span className="px-3 py-1 bg-[#0A0A0A] border border-white/10 rounded font-mono text-xs text-zinc-400">cac_payback_period</span>
+                <span className="px-3 py-1 bg-[#0A0A0A] border border-white/10 rounded font-mono text-xs text-zinc-400">strategic_goal_met</span>
+              </div>
+            </div>
+            <Link to="/book-call" className="inline-flex items-center justify-center px-8 py-3 bg-transparent text-[#8B5CF6] border border-[#8B5CF6]/50 font-mono text-sm uppercase tracking-widest rounded-full hover:bg-[#8B5CF6]/10 transition-colors">
+              Discuss Advisory
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Link>
           </div>
         </div>
 
