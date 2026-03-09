@@ -108,22 +108,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Trust Bar */}
-      <section className="py-12 bg-[#050505] border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-xs font-mono uppercase tracking-widest text-zinc-500 mb-8">
-            Trusted by data-driven growth teams at [Company Name], [Company Name], and [Company Name].
-          </p>
-          <div className="flex flex-wrap justify-center gap-12 opacity-50 grayscale">
-            {/* Placeholder Logos */}
-            <div className="h-8 w-32 bg-white/10 rounded animate-pulse"></div>
-            <div className="h-8 w-32 bg-white/10 rounded animate-pulse"></div>
-            <div className="h-8 w-32 bg-white/10 rounded animate-pulse"></div>
-            <div className="h-8 w-32 bg-white/10 rounded animate-pulse"></div>
-          </div>
-        </div>
-      </section>
-
       {/* The Problem Section */}
       <section className="py-24 bg-[#0A0A0A] border-b border-white/10 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 pointer-events-none"></div>
