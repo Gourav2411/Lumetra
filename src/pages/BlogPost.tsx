@@ -185,6 +185,11 @@ export function BlogPost() {
           prose-img:rounded-3xl prose-img:border prose-img:border-white/10 prose-img:shadow-2xl prose-img:my-12">
           <ReactMarkdown
             components={{
+              h1: ({ node, children, ...props }: any) => <h1 className="text-4xl font-display font-light text-white mb-8" {...props}>{children}</h1>,
+              h2: ({ node, children, ...props }: any) => <h2 className="text-3xl font-display font-light text-white mt-16 mb-8 pb-4 border-b border-white/10" {...props}>{children}</h2>,
+              img: ({ node, src, alt, ...props }: any) => (
+                <img src={src} alt={alt || post.title} loading="lazy" className="rounded-3xl border border-white/10 shadow-2xl my-12 w-full" {...props} />
+              ),
               a: ({ node, href, children, ...props }: any) => {
                 const isInternal = href?.startsWith('/') || href?.includes('lumetraanalytics.com');
                 

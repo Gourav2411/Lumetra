@@ -69,6 +69,18 @@ export function Tools() {
               Visual BigQuery SQL generator for GA4 export data.
             </p>
           </div>
+
+          <a href="https://www.minionarts.com" target="_blank" rel="noopener noreferrer" className="bg-[#0A0A0A] rounded-3xl border border-white/10 p-8 hover:border-[#D4AF37]/50 transition-colors group relative overflow-hidden flex flex-col">
+            <div className="absolute top-0 right-0 w-16 h-[1px] bg-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div className="absolute bottom-0 left-0 w-[1px] h-16 bg-[#5B8FB9] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div className="w-12 h-12 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/5 flex items-center justify-center mb-6 text-[#D4AF37] group-hover:bg-[#D4AF37]/10 transition-colors">
+              <Wrench className="w-5 h-5" />
+            </div>
+            <h2 className="text-xl font-display font-medium text-white mb-3">Minionarts</h2>
+            <p className="text-zinc-400 font-light text-sm leading-relaxed flex-1">
+              AI-driven visual content generation and prompt engineering tools.
+            </p>
+          </a>
         </div>
       </div>
     </div>
